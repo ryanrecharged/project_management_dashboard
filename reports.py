@@ -109,15 +109,15 @@ def display_report_column_tabs(tabs_list, df):
     with tabs_list[1]: # Gantt chart
         st.altair_chart(gantt_chart(df), use_container_width=True)
         
-    with tabs_list[2]: # Tableau-style
-        stc.html(tableau_style(df), scrolling=True, height=920)
+    # with tabs_list[2]: # Tableau-style
+    #     stc.html(tableau_style(df), scrolling=True, height=920)
         
     with tabs_list[0]: # Table
         opts = [v['display_name'] for (k,v) in CONTROL.project_stages().items()]
         edf = table_display(df, opts)
         st.button("Save Changes", on_click=UTILS.save_edited_df, args=(edf,))
     
-    with tabs_list[3]: # Admin
+    with tabs_list[2]: # Admin
         buttons, days_per = st.columns(2)
         tstmp = pd.Timestamp.now().strftime("%Y-%m-%d.%H%M")
         

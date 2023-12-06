@@ -171,8 +171,11 @@ def apply_matching_function(data_id):
 
 def load_initial_dataframe():
     # Load data
-    df = pd.read_csv(CONTROL.app_locations()['project_data'])
-    df = df.drop(columns=["Unnamed: 0"])
+    #df = pd.read_csv(CONTROL.app_locations()['project_data'])
+    df = retrieve_database_from_aws()
+    df.reset_index(inplace=True, drop=True)
+    print(df.head())
+    # df = df.drop(columns=["Unnamed: 0"])
     df['internal_id'] = df.index + 5001
     
     # Expand data to isolate 'primary_keys' only
@@ -274,8 +277,32 @@ def save_edited_df(df, save_edits=True):
     #TODO: Consolidate multiple lines here if all but index, structure_name match
     #df = consolidate_duplicates(df)
         
-    df.to_csv(CONTROL.app_locations()['project_data'])
+    store_database_to_aws(df)
     print("~~~~~~~saved~~~~~~~~~")
+
+
+def retrieve_database_from_aws():
+    bucket = st.secrets.AWS_BUCKET
+    bucket_key = st.secrets.AWS_KEYNAME
+    
+    df = pd.read_csv(f"s3://{bucket}/{bucket_key}",
+        storage_options={
+            "key":st.secrets.AWS_ACCESS_KEY_ID, 
+            "secret":st.secrets.AWS_SECRET_ACCESS_KEY
+            }, index_col=0)
+    df.index = pd.to_datetime(df.index)
+            
+    return df
+
+def store_database_to_aws(df):
+    bucket = st.secrets.AWS_BUCKET
+    bucket_key = st.secrets.AWS_KEYNAME
+    
+    df.to_csv(f"s3://{bucket}/{bucket_key}",
+        storage_options={
+            "key":st.secrets.AWS_ACCESS_KEY_ID, 
+            "secret":st.secrets.AWS_SECRET_ACCESS_KEY
+            })
 
 def today_plus(days):
     return (datetime.now() + timedelta(days=days)).strftime("%Y-%m-%d")

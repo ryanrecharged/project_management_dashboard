@@ -68,8 +68,8 @@ def structure_page():
 def report_page():
     st.subheader("Project Manager")
     report_col1, report_col2 = st.columns([5,1])
-    table, tabr1, tabr2, tabr3  = report_col1.tabs(
-        ["Table", "Timeline", "Tableau", "Admin"]
+    table, tabr1, tabr3  = report_col1.tabs(
+        ["Table", "Timeline", "Admin"]
         )
     
     # FILTER CONFLICTS
@@ -90,7 +90,7 @@ def report_page():
     
     
     reports.display_report_column_options(report_col2, filter_df)
-    reports.display_report_column_tabs([table, tabr1, tabr2, tabr3], filter_df)
+    reports.display_report_column_tabs([table, tabr1, tabr3], filter_df)
     
     
 # Main Logic for Navigation
