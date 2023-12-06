@@ -1,0 +1,107 @@
+,primary_key_line,primary_key_sta,second_key_line,second_key_sta,stage,projected_end_date,pad_type,difficulty_rating,subcontractor,foreman_notes,field_notes,next_phase_start_date,next_phase_end_date,phase_completion_pct,assigned_crew,ctm_notes,public_road,dxf_point_count,dxf_file_name,team,timeline_conflict,selected_filter,structure_name,today,internal_id
+0,12,217,11,151,Clearing,2023-11-23,Mixed Matting,3.0,Supreme,,,2023-11-25,2023-11-25,0.0,,permanent notes go here,main st,61.0,string_number_.dxf,Constr.,False,True,12-217,11/28/2023,5001
+1,12,218,11,152,Clearing,2023-11-20,Min Impact,,Supreme,,,2023-11-26,2023-11-26,0.0,,,,,,Constr.,False,True,12-218,11/28/2023,5002
+2,12,219,11,153,Stakeout,2023-11-20,Type 1,,C.T. Male,,,2023-11-23,2023-11-27,25.0,Skelly,,,,,Survey,False,True,12-219,11/28/2023,5003
+3,12,220,11,154,Stakeout,2023-11-20,Mixed Matting,,C.T. Male,,will complete before end of day,2023-11-24,2023-11-28,75.0,Lampkin,,,,,Survey,False,True,12-220,11/28/2023,5004
+4,12,221,11,155,Stakeout,2023-11-20,Mixed Matting,,C.T. Male,,,2023-11-25,2023-11-14,0.5,Ellison,,,,,Survey,False,True,12-221,11/28/2023,5005
+5,12,222,11,156,Stakeout,2023-11-21,Mixed Matting,,C.T. Male,,,2023-11-26,2023-11-14,0.0,,,,,,Survey,False,True,12-222,11/28/2023,5006
+6,12,223,11,157,Planning,2023-11-22,Mixed Matting,,Burns McDonnell,,,2023-11-27,2023-11-15,0.0,,,,,,Project Mgmt,False,True,12-223,11/28/2023,5007
+7,12,224,11,158,Planning,2023-11-23,Type 1,,Burns McDonnell,,,2023-11-28,2023-11-15,0.0,,,,,,Project Mgmt,False,True,12-224,11/28/2023,5008
+8,12,225,11,159,Brush clearing,2023-11-24,Type 1,,Supreme,,,2023-11-29,2023-11-16,0.0,,,,,,Constr.,False,True,12-225,11/28/2023,5009
+9,12,226,11,160,Brush clearing,2023-11-20,Mixed Matting,,Supreme,,,2023-11-27,2023-11-16,0.0,,,,,,Constr.,False,True,12-226,11/28/2023,5010
+10,12,227,11,161,Brush clearing,2023-11-20,Type 1,,Supreme,,,2023-11-28,2023-11-17,0.0,,,,,,Constr.,False,True,12-227,11/28/2023,5011
+11,12,228,11,162,Drilling,2023-11-20,Type 1,,Tri State,,,2023-11-29,2023-11-17,0.0,,,,,,Drilling,False,True,12-228,11/28/2023,5012
+12,12,229,11,163,Drilling,2023-11-20,Mixed Matting,,Tri State,,,2023-11-27,2023-11-18,0.0,,,,,,Drilling,False,True,12-229,11/28/2023,5013
+13,12,230,11,164,Construction,2023-11-29,Min Impact,,Supreme,,,2023-11-28,2023-11-18,0.0,,,,,,Constr.,True,True,12-230,11/28/2023,5014
+14,12,231,11,165,Construction,2023-12-01,Type 1,,Supreme,,,2023-11-29,2023-11-22,0.0,,,,,,Constr.,True,True,12-231,11/28/2023,5015
+15,12,232,11,166,Construction,2023-12-02,Type 1,,Supreme,,,2023-11-15,2023-11-22,0.0,,,,,,Constr.,True,True,12-232,11/28/2023,5016
+16,12,233,11,167,Planning,2023-12-03,Mixed Matting,,Burns McDonnell,,,2023-11-15,2023-11-22,0.0,,,,,,Project Mgmt,True,True,12-233,11/28/2023,5017
+17,12,234,11,168,Planning,2023-12-04,Min Impact,,Burns McDonnell,,,2023-11-15,2023-11-22,0.0,,,,,,Project Mgmt,True,True,12-234,11/28/2023,5018
+18,12,235,11,169,Planning,2023-12-05,Mixed Matting,,Burns McDonnell,,,2023-11-15,2023-11-22,0.0,,,,,,Project Mgmt,True,True,12-235,11/28/2023,5019
+19,12,236,11,170,Survey offsets,2023-12-06,Mixed Matting,,C.T. Male,,,2023-11-15,2023-11-22,0.0,,,,,,Survey,True,True,12-236,11/28/2023,5020
+20,12,237,11,171,Survey offsets,2023-12-07,Min Impact,,C.T. Male,,,2023-11-15,2023-11-22,0.0,,,,,,Survey,True,True,12-237,11/28/2023,5021
+21,12,238,11,172,Construction,2023-12-08,Type 1,,Supreme,,,2023-11-15,2023-11-22,0.0,,,,,,Constr.,True,True,12-238,11/28/2023,5022
+22,12,239,11,173,Construction,2023-12-09,Type 1,,Supreme,,,2023-11-15,2023-11-22,0.0,,,,,,Constr.,True,True,12-239,11/28/2023,5023
+23,12,240,11,174,Drilling,2023-12-10,Type 1,,Tri State,,,2023-11-15,2023-11-22,0.0,,,,,,Drilling,True,True,12-240,11/28/2023,5024
+24,12,241,11,175,Drilling,2023-12-11,Type 1,,Tri State,,,2023-11-15,2023-11-22,0.0,,,,,,Drilling,True,True,12-241,11/28/2023,5025
+25,12,242,11,176,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,12-242,,5026
+26,12,243,11,177,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,12-243,,5027
+27,12,244,11,178,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,12-244,,5028
+28,12,245,11,179,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,12-245,,5029
+29,12,246,11,180,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,12-246,,5030
+30,12,247,11,181,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,12-247,,5031
+31,0,0,11,65429,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,0-0,,5032
+32,0,0,11,65417,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,0-0,,5033
+33,0,0,11,65409,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,0-0,,5034
+34,0,0,11,120,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,0-0,,5035
+35,0,0,13,9,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,0-0,,5036
+36,0,0,11,96,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,0-0,,5037
+37,0,0,11,88,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,0-0,,5038
+38,0,0,11,106,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,0-0,,5039
+39,0,0,11,104,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,0-0,,5040
+40,0,0,11,103,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,0-0,,5041
+41,0,0,11,102,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,0-0,,5042
+42,0,0,11,101,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,0-0,,5043
+43,0,0,11,99,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,0-0,,5044
+44,0,0,11,98,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,0-0,,5045
+45,0,0,11,97,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,0-0,,5046
+46,0,0,11,95,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,0-0,,5047
+47,0,0,11,94,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,0-0,,5048
+48,0,0,11,82,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,0-0,,5049
+49,0,0,11,59,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,0-0,,5050
+50,0,0,11,109,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,0-0,,5051
+51,0,0,11,110,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,0-0,,5052
+52,0,0,11,111,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,0-0,,5053
+53,11,151,12,217,Clearing,2023-11-23,Mixed Matting,3.0,Supreme,,,2023-11-25,2023-11-25,0.0,,permanent notes go here,main st,61.0,string_number_.dxf,Constr.,False,True,11-151,11/28/2023,5054
+54,11,152,12,218,Clearing,2023-11-20,Min Impact,,Supreme,,,2023-11-26,2023-11-26,0.0,,,,,,Constr.,False,True,11-152,11/28/2023,5055
+55,11,153,12,219,Stakeout,2023-11-20,Type 1,,C.T. Male,,,2023-11-23,2023-11-27,25.0,Skelly,,,,,Survey,False,True,11-153,11/28/2023,5056
+56,11,154,12,220,Stakeout,2023-11-20,Mixed Matting,,C.T. Male,,will complete before end of day,2023-11-24,2023-11-28,75.0,Lampkin,,,,,Survey,False,True,11-154,11/28/2023,5057
+57,11,155,12,221,Stakeout,2023-11-20,Mixed Matting,,C.T. Male,,,2023-11-25,2023-11-14,0.5,Ellison,,,,,Survey,False,True,11-155,11/28/2023,5058
+58,11,156,12,222,Stakeout,2023-11-21,Mixed Matting,,C.T. Male,,,2023-11-26,2023-11-14,0.0,,,,,,Survey,False,True,11-156,11/28/2023,5059
+59,11,157,12,223,Planning,2023-11-22,Mixed Matting,,Burns McDonnell,,,2023-11-27,2023-11-15,0.0,,,,,,Project Mgmt,False,True,11-157,11/28/2023,5060
+60,11,158,12,224,Planning,2023-11-23,Type 1,,Burns McDonnell,,,2023-11-28,2023-11-15,0.0,,,,,,Project Mgmt,False,True,11-158,11/28/2023,5061
+61,11,159,12,225,Brush clearing,2023-11-24,Type 1,,Supreme,,,2023-11-29,2023-11-16,0.0,,,,,,Constr.,False,True,11-159,11/28/2023,5062
+62,11,160,12,226,Brush clearing,2023-11-20,Mixed Matting,,Supreme,,,2023-11-27,2023-11-16,0.0,,,,,,Constr.,False,True,11-160,11/28/2023,5063
+63,11,161,12,227,Brush clearing,2023-11-20,Type 1,,Supreme,,,2023-11-28,2023-11-17,0.0,,,,,,Constr.,False,True,11-161,11/28/2023,5064
+64,11,162,12,228,Drilling,2023-11-20,Type 1,,Tri State,,,2023-11-29,2023-11-17,0.0,,,,,,Drilling,False,True,11-162,11/28/2023,5065
+65,11,163,12,229,Drilling,2023-11-20,Mixed Matting,,Tri State,,,2023-11-27,2023-11-18,0.0,,,,,,Drilling,False,True,11-163,11/28/2023,5066
+66,11,164,12,230,Construction,2023-11-29,Min Impact,,Supreme,,,2023-11-28,2023-11-18,0.0,,,,,,Constr.,True,True,11-164,11/28/2023,5067
+67,11,165,12,231,Construction,2023-12-01,Type 1,,Supreme,,,2023-11-29,2023-11-22,0.0,,,,,,Constr.,True,True,11-165,11/28/2023,5068
+68,11,166,12,232,Construction,2023-12-02,Type 1,,Supreme,,,2023-11-15,2023-11-22,0.0,,,,,,Constr.,True,True,11-166,11/28/2023,5069
+69,11,167,12,233,Planning,2023-12-03,Mixed Matting,,Burns McDonnell,,,2023-11-15,2023-11-22,0.0,,,,,,Project Mgmt,True,True,11-167,11/28/2023,5070
+70,11,168,12,234,Planning,2023-12-04,Min Impact,,Burns McDonnell,,,2023-11-15,2023-11-22,0.0,,,,,,Project Mgmt,True,True,11-168,11/28/2023,5071
+71,11,169,12,235,Planning,2023-12-05,Mixed Matting,,Burns McDonnell,,,2023-11-15,2023-11-22,0.0,,,,,,Project Mgmt,True,True,11-169,11/28/2023,5072
+72,11,170,12,236,Survey offsets,2023-12-06,Mixed Matting,,C.T. Male,,,2023-11-15,2023-11-22,0.0,,,,,,Survey,True,True,11-170,11/28/2023,5073
+73,11,171,12,237,Survey offsets,2023-12-07,Min Impact,,C.T. Male,,,2023-11-15,2023-11-22,0.0,,,,,,Survey,True,True,11-171,11/28/2023,5074
+74,11,172,12,238,Construction,2023-12-08,Type 1,,Supreme,,,2023-11-15,2023-11-22,0.0,,,,,,Constr.,True,True,11-172,11/28/2023,5075
+75,11,173,12,239,Construction,2023-12-09,Type 1,,Supreme,,,2023-11-15,2023-11-22,0.0,,,,,,Constr.,True,True,11-173,11/28/2023,5076
+76,11,174,12,240,Drilling,2023-12-10,Type 1,,Tri State,,,2023-11-15,2023-11-22,0.0,,,,,,Drilling,True,True,11-174,11/28/2023,5077
+77,11,175,12,241,Drilling,2023-12-11,Type 1,,Tri State,,,2023-11-15,2023-11-22,0.0,,,,,,Drilling,True,True,11-175,11/28/2023,5078
+78,11,176,12,242,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,11-176,,5079
+79,11,177,12,243,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,11-177,,5080
+80,11,178,12,244,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,11-178,,5081
+81,11,179,12,245,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,11-179,,5082
+82,11,180,12,246,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,11-180,,5083
+83,11,181,12,247,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,11-181,,5084
+84,11,65429,0,0,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,11-65429,,5085
+85,11,65417,0,0,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,11-65417,,5086
+86,11,65409,0,0,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,11-65409,,5087
+87,11,120,0,0,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,11-120,,5088
+88,13,9,0,0,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,13-9,,5089
+89,11,96,0,0,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,11-96,,5090
+90,11,88,0,0,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,11-88,,5091
+91,11,106,0,0,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,11-106,,5092
+92,11,104,0,0,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,11-104,,5093
+93,11,103,0,0,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,11-103,,5094
+94,11,102,0,0,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,11-102,,5095
+95,11,101,0,0,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,11-101,,5096
+96,11,99,0,0,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,11-99,,5097
+97,11,98,0,0,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,11-98,,5098
+98,11,97,0,0,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,11-97,,5099
+99,11,95,0,0,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,11-95,,5100
+100,11,94,0,0,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,11-94,,5101
+101,11,82,0,0,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,11-82,,5102
+102,11,59,0,0,Planning,,,,Burns McDonnell,Structure redesigned. Use All Structure Points file from 2023-12-01,confirmed,2023-12-31,,100.0,,,,,,Project Mgmt,False,True,11-59,,5103
+103,11,109,0,0,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,11-109,,5104
+104,11,110,0,0,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,11-110,,5105
+105,11,111,0,0,Planning,,,,Burns McDonnell,,,2023-12-31,,0.0,,,,,,Project Mgmt,False,True,11-111,,5106

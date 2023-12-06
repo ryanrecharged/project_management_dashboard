@@ -1,0 +1,1321 @@
+[
+    {
+      "config": {
+        "defaultAggregated": true,
+        "geoms": [
+          "point"
+        ],
+        "coordSystem": "generic",
+        "limit": -1
+      },
+      "encodings": {
+        "dimensions": [
+          {
+            "dragId": "gw_C65I",
+            "fid": "GW_9CMXNWFAZVSL7J9DDSUHZDBL97HS",
+            "name": "primary_key_line",
+            "basename": "primary_key_line",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_nbtx",
+            "fid": "GW_1BC83X8WHF5PHDE9704ASFKCJSG",
+            "name": "primary_key_sta",
+            "basename": "primary_key_sta",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_4Dkg",
+            "fid": "GW_1CKX6IFAQX9VHROTUKC2PCRNDIO",
+            "name": "second_key_line",
+            "basename": "second_key_line",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_EIOB",
+            "fid": "GW_6TXWZ7RY5SY8OPFG3ZU0Y0IEO",
+            "name": "second_key_sta",
+            "basename": "second_key_sta",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_huEu",
+            "fid": "GW_8VZFJZX0D2O",
+            "name": "stage",
+            "basename": "stage",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_AU3H",
+            "fid": "GW_D4V1M0NZYI4TUWHAQ4DUKRJH3DBQ90W",
+            "name": "projected_end_date",
+            "basename": "projected_end_date",
+            "semanticType": "temporal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_kn5O",
+            "fid": "GW_2EF4M200TLDKNQR4",
+            "name": "pad_type",
+            "basename": "pad_type",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_APJE",
+            "fid": "GW_YLR7XTZUR7LBGO9E7UZBIUO",
+            "name": "subcontractor",
+            "basename": "subcontractor",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_cFJf",
+            "fid": "GW_UP8NQW4UR48NXS1BFYVLN3K",
+            "name": "foreman_notes",
+            "basename": "foreman_notes",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_F7ZJ",
+            "fid": "GW_3KT5JCHEB7QF0XU5G0DLB7JNPVLC30POZU40",
+            "name": "next_phase_start_date",
+            "basename": "next_phase_start_date",
+            "semanticType": "temporal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_qXnf",
+            "fid": "GW_2JP96HUO06GDPY2NMTCYDIOPAF36OIYI8",
+            "name": "next_phase_end_date",
+            "basename": "next_phase_end_date",
+            "semanticType": "temporal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_PEO1",
+            "fid": "GW_T7GLKVABIFO6OA9ASSWS6CW",
+            "name": "assigned_crew",
+            "basename": "assigned_crew",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_w5tz",
+            "fid": "GW_F3UZROPZNW2L1O3ZK",
+            "name": "ctm_notes",
+            "basename": "ctm_notes",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_z7zr",
+            "fid": "GW_NZTSBZB1H2RXU0HP8SHC",
+            "name": "public_road",
+            "basename": "public_road",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_nt5z",
+            "fid": "GW_U41E197RVW4ODKBTVI7WNQO",
+            "name": "dxf_file_name",
+            "basename": "dxf_file_name",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_iwsV",
+            "fid": "GW_19D4MYD73K",
+            "name": "team",
+            "basename": "team",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_wi6E",
+            "fid": "GW_1WU9SE9S6IKWGL6M3ZK0JU7AE1OFU8",
+            "name": "timeline_conflict",
+            "basename": "timeline_conflict",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_YNjn",
+            "fid": "GW_1CKX973WK8NNOZNJH0BB5JATA9C",
+            "name": "selected_filter",
+            "basename": "selected_filter",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_rBZl",
+            "fid": "GW_6U2FGF0B2GH4CKGQC0XPTL5BK",
+            "name": "structure_name",
+            "basename": "structure_name",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_mea_key_fid",
+            "fid": "GW_N72PJ8XHCGBP8WPPED8GP4G",
+            "name": "Measure names",
+            "analyticType": "dimension",
+            "semanticType": "nominal"
+          }
+        ],
+        "measures": [
+          {
+            "dragId": "gw_IPpl",
+            "fid": "GW_1NDNC7KIYAV79O2A6GPJ3UKC1U05RK",
+            "name": "difficulty_rating",
+            "basename": "difficulty_rating",
+            "analyticType": "measure",
+            "semanticType": "nominal",
+            "aggName": "sum"
+          },
+          {
+            "dragId": "gw_N9Y1",
+            "fid": "GW_LUNKJCWF6FYJPNJ0LSFK",
+            "name": "field_notes",
+            "basename": "field_notes",
+            "analyticType": "measure",
+            "semanticType": "nominal",
+            "aggName": "sum"
+          },
+          {
+            "dragId": "gw_nGG2",
+            "fid": "GW_IFZAZ8EBM33NIFB5HIHZRW1PEUOKS3SIEO",
+            "name": "phase_completion_pct",
+            "basename": "phase_completion_pct",
+            "analyticType": "measure",
+            "semanticType": "quantitative",
+            "aggName": "sum"
+          },
+          {
+            "dragId": "gw_SUdy",
+            "fid": "GW_16APK25SM4Z7U5W2RK55XP14SOG",
+            "name": "dxf_point_count",
+            "basename": "dxf_point_count",
+            "analyticType": "measure",
+            "semanticType": "nominal",
+            "aggName": "sum"
+          },
+          {
+            "dragId": "gw_Y0k0",
+            "fid": "GW_5VXAXCL4YIGRFI4MEAZC01EEO",
+            "name": "completion_pct",
+            "basename": "completion_pct",
+            "analyticType": "measure",
+            "semanticType": "nominal",
+            "aggName": "sum"
+          },
+          {
+            "dragId": "gw_count_fid",
+            "fid": "gw_count_fid",
+            "name": "Row count",
+            "analyticType": "measure",
+            "semanticType": "quantitative",
+            "aggName": "sum",
+            "computed": true,
+            "expression": {
+              "op": "one",
+              "params": [],
+              "as": "gw_count_fid"
+            }
+          },
+          {
+            "dragId": "gw_mea_val_fid",
+            "fid": "GW_4KYB9KVI3CK37NQAUJ65UJWVK",
+            "name": "Measure values",
+            "analyticType": "measure",
+            "semanticType": "quantitative",
+            "aggName": "sum"
+          }
+        ],
+        "rows": [
+          {
+            "dragId": "gw_zc1V",
+            "fid": "GW_8VZFJZX0D2O",
+            "name": "stage",
+            "basename": "stage",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          }
+        ],
+        "columns": [
+          {
+            "dragId": "gw_m4Ob",
+            "fid": "GW_D4V1M0NZYI4TUWHAQ4DUKRJH3DBQ90W",
+            "name": "projected_end_date",
+            "basename": "projected_end_date",
+            "semanticType": "temporal",
+            "analyticType": "dimension"
+          }
+        ],
+        "color": [
+          {
+            "dragId": "gw_eVrj",
+            "fid": "GW_YLR7XTZUR7LBGO9E7UZBIUO",
+            "name": "subcontractor",
+            "basename": "subcontractor",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          }
+        ],
+        "opacity": [],
+        "size": [],
+        "shape": [
+          {
+            "dragId": "gw_zyWS",
+            "fid": "GW_2EF4M200TLDKNQR4",
+            "name": "pad_type",
+            "basename": "pad_type",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          }
+        ],
+        "radius": [],
+        "theta": [],
+        "longitude": [],
+        "latitude": [],
+        "geoId": [],
+        "details": [
+          {
+            "dragId": "gw_q3wW",
+            "fid": "GW_F3UZROPZNW2L1O3ZK",
+            "name": "ctm_notes",
+            "basename": "ctm_notes",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          }
+        ],
+        "filters": [],
+        "text": []
+      },
+      "layout": {
+        "showActions": false,
+        "showTableSummary": false,
+        "stack": "stack",
+        "interactiveScale": false,
+        "zeroScale": true,
+        "size": {
+          "mode": "fixed",
+          "width": 706,
+          "height": 372
+        },
+        "format": {},
+        "geoKey": "name",
+        "resolve": {
+          "x": false,
+          "y": false,
+          "color": false,
+          "opacity": false,
+          "shape": false,
+          "size": false
+        }
+      },
+      "visId": "gw_3Jwr",
+      "name": "Projected End Dates by Stage"
+    },
+    {
+      "config": {
+        "defaultAggregated": true,
+        "geoms": [
+          "bar"
+        ],
+        "coordSystem": "generic",
+        "limit": -1
+      },
+      "encodings": {
+        "dimensions": [
+          {
+            "dragId": "gw_Icut",
+            "fid": "GW_9CMXNWFAZVSL7J9DDSUHZDBL97HS",
+            "name": "primary_key_line",
+            "basename": "primary_key_line",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_MJL5",
+            "fid": "GW_1BC83X8WHF5PHDE9704ASFKCJSG",
+            "name": "primary_key_sta",
+            "basename": "primary_key_sta",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_5kS3",
+            "fid": "GW_1CKX6IFAQX9VHROTUKC2PCRNDIO",
+            "name": "second_key_line",
+            "basename": "second_key_line",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_VMaf",
+            "fid": "GW_6TXWZ7RY5SY8OPFG3ZU0Y0IEO",
+            "name": "second_key_sta",
+            "basename": "second_key_sta",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_3DD9",
+            "fid": "GW_8VZFJZX0D2O",
+            "name": "stage",
+            "basename": "stage",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_AUI2",
+            "fid": "GW_D4V1M0NZYI4TUWHAQ4DUKRJH3DBQ90W",
+            "name": "projected_end_date",
+            "basename": "projected_end_date",
+            "semanticType": "temporal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_RSzQ",
+            "fid": "GW_2EF4M200TLDKNQR4",
+            "name": "pad_type",
+            "basename": "pad_type",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_QOHL",
+            "fid": "GW_YLR7XTZUR7LBGO9E7UZBIUO",
+            "name": "subcontractor",
+            "basename": "subcontractor",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_repq",
+            "fid": "GW_UP8NQW4UR48NXS1BFYVLN3K",
+            "name": "foreman_notes",
+            "basename": "foreman_notes",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_ziHY",
+            "fid": "GW_3KT5JCHEB7QF0XU5G0DLB7JNPVLC30POZU40",
+            "name": "next_phase_start_date",
+            "basename": "next_phase_start_date",
+            "semanticType": "temporal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_dGkY",
+            "fid": "GW_2JP96HUO06GDPY2NMTCYDIOPAF36OIYI8",
+            "name": "next_phase_end_date",
+            "basename": "next_phase_end_date",
+            "semanticType": "temporal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_uPIZ",
+            "fid": "GW_T7GLKVABIFO6OA9ASSWS6CW",
+            "name": "assigned_crew",
+            "basename": "assigned_crew",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_eHuj",
+            "fid": "GW_F3UZROPZNW2L1O3ZK",
+            "name": "ctm_notes",
+            "basename": "ctm_notes",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_d8Yg",
+            "fid": "GW_NZTSBZB1H2RXU0HP8SHC",
+            "name": "public_road",
+            "basename": "public_road",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_28Ti",
+            "fid": "GW_U41E197RVW4ODKBTVI7WNQO",
+            "name": "dxf_file_name",
+            "basename": "dxf_file_name",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_6DrJ",
+            "fid": "GW_19D4MYD73K",
+            "name": "team",
+            "basename": "team",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_gUp9",
+            "fid": "GW_1WU9SE9S6IKWGL6M3ZK0JU7AE1OFU8",
+            "name": "timeline_conflict",
+            "basename": "timeline_conflict",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_-bun",
+            "fid": "GW_1CKX973WK8NNOZNJH0BB5JATA9C",
+            "name": "selected_filter",
+            "basename": "selected_filter",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_eJHS",
+            "fid": "GW_6U2FGF0B2GH4CKGQC0XPTL5BK",
+            "name": "structure_name",
+            "basename": "structure_name",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_mea_key_fid",
+            "fid": "GW_N72PJ8XHCGBP8WPPED8GP4G",
+            "name": "Measure names",
+            "analyticType": "dimension",
+            "semanticType": "nominal"
+          }
+        ],
+        "measures": [
+          {
+            "dragId": "gw_5xVf",
+            "fid": "GW_1NDNC7KIYAV79O2A6GPJ3UKC1U05RK",
+            "name": "difficulty_rating",
+            "basename": "difficulty_rating",
+            "analyticType": "measure",
+            "semanticType": "nominal",
+            "aggName": "sum"
+          },
+          {
+            "dragId": "gw_cbq_",
+            "fid": "GW_LUNKJCWF6FYJPNJ0LSFK",
+            "name": "field_notes",
+            "basename": "field_notes",
+            "analyticType": "measure",
+            "semanticType": "nominal",
+            "aggName": "sum"
+          },
+          {
+            "dragId": "gw_T4pq",
+            "fid": "GW_IFZAZ8EBM33NIFB5HIHZRW1PEUOKS3SIEO",
+            "name": "phase_completion_pct",
+            "basename": "phase_completion_pct",
+            "analyticType": "measure",
+            "semanticType": "quantitative",
+            "aggName": "sum"
+          },
+          {
+            "dragId": "gw_zPuJ",
+            "fid": "GW_16APK25SM4Z7U5W2RK55XP14SOG",
+            "name": "dxf_point_count",
+            "basename": "dxf_point_count",
+            "analyticType": "measure",
+            "semanticType": "nominal",
+            "aggName": "sum"
+          },
+          {
+            "dragId": "gw_8Nz3",
+            "fid": "GW_5VXAXCL4YIGRFI4MEAZC01EEO",
+            "name": "completion_pct",
+            "basename": "completion_pct",
+            "analyticType": "measure",
+            "semanticType": "nominal",
+            "aggName": "sum"
+          },
+          {
+            "dragId": "gw_count_fid",
+            "fid": "gw_count_fid",
+            "name": "Row count",
+            "analyticType": "measure",
+            "semanticType": "quantitative",
+            "aggName": "sum",
+            "computed": true,
+            "expression": {
+              "op": "one",
+              "params": [],
+              "as": "gw_count_fid"
+            }
+          },
+          {
+            "dragId": "gw_mea_val_fid",
+            "fid": "GW_4KYB9KVI3CK37NQAUJ65UJWVK",
+            "name": "Measure values",
+            "analyticType": "measure",
+            "semanticType": "quantitative",
+            "aggName": "sum"
+          }
+        ],
+        "rows": [
+          {
+            "dragId": "gw_rTNj",
+            "fid": "GW_8VZFJZX0D2O",
+            "name": "stage",
+            "basename": "stage",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          }
+        ],
+        "columns": [
+          {
+            "dragId": "gw_OVxh",
+            "fid": "gw_count_fid",
+            "name": "Row count",
+            "analyticType": "measure",
+            "semanticType": "quantitative",
+            "aggName": "sum",
+            "computed": true,
+            "expression": {
+              "op": "one",
+              "params": [],
+              "as": "gw_count_fid"
+            }
+          }
+        ],
+        "color": [],
+        "opacity": [
+          {
+            "dragId": "gw_Shqz",
+            "fid": "GW_YLR7XTZUR7LBGO9E7UZBIUO",
+            "name": "subcontractor",
+            "basename": "subcontractor",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          }
+        ],
+        "size": [],
+        "shape": [],
+        "radius": [],
+        "theta": [],
+        "longitude": [],
+        "latitude": [],
+        "geoId": [],
+        "details": [
+          {
+            "dragId": "gw_bMW7",
+            "fid": "GW_YLR7XTZUR7LBGO9E7UZBIUO",
+            "name": "subcontractor",
+            "basename": "subcontractor",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          }
+        ],
+        "filters": [],
+        "text": []
+      },
+      "layout": {
+        "showActions": false,
+        "showTableSummary": false,
+        "stack": "stack",
+        "interactiveScale": false,
+        "zeroScale": true,
+        "size": {
+          "mode": "fixed",
+          "width": 698,
+          "height": 378
+        },
+        "format": {},
+        "geoKey": "name",
+        "resolve": {
+          "x": false,
+          "y": false,
+          "color": false,
+          "opacity": false,
+          "shape": false,
+          "size": false
+        }
+      },
+      "visId": "gw_adPN",
+      "name": "Stage Counts"
+    },
+    {
+      "config": {
+        "defaultAggregated": true,
+        "geoms": [
+          "point"
+        ],
+        "coordSystem": "generic",
+        "limit": -1
+      },
+      "encodings": {
+        "dimensions": [
+          {
+            "dragId": "gw_KFQ2",
+            "fid": "GW_9CMXNWFAZVSL7J9DDSUHZDBL97HS",
+            "name": "primary_key_line",
+            "basename": "primary_key_line",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_SxuT",
+            "fid": "GW_1BC83X8WHF5PHDE9704ASFKCJSG",
+            "name": "primary_key_sta",
+            "basename": "primary_key_sta",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_RTUZ",
+            "fid": "GW_1CKX6IFAQX9VHROTUKC2PCRNDIO",
+            "name": "second_key_line",
+            "basename": "second_key_line",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_3O8Z",
+            "fid": "GW_6TXWZ7RY5SY8OPFG3ZU0Y0IEO",
+            "name": "second_key_sta",
+            "basename": "second_key_sta",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_XhLa",
+            "fid": "GW_8VZFJZX0D2O",
+            "name": "stage",
+            "basename": "stage",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_8hHp",
+            "fid": "GW_D4V1M0NZYI4TUWHAQ4DUKRJH3DBQ90W",
+            "name": "projected_end_date",
+            "basename": "projected_end_date",
+            "semanticType": "temporal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_9f22",
+            "fid": "GW_2EF4M200TLDKNQR4",
+            "name": "pad_type",
+            "basename": "pad_type",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_7ttW",
+            "fid": "GW_YLR7XTZUR7LBGO9E7UZBIUO",
+            "name": "subcontractor",
+            "basename": "subcontractor",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_Cluz",
+            "fid": "GW_UP8NQW4UR48NXS1BFYVLN3K",
+            "name": "foreman_notes",
+            "basename": "foreman_notes",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_qorG",
+            "fid": "GW_3KT5JCHEB7QF0XU5G0DLB7JNPVLC30POZU40",
+            "name": "next_phase_start_date",
+            "basename": "next_phase_start_date",
+            "semanticType": "temporal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_Yubh",
+            "fid": "GW_2JP96HUO06GDPY2NMTCYDIOPAF36OIYI8",
+            "name": "next_phase_end_date",
+            "basename": "next_phase_end_date",
+            "semanticType": "temporal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_oxC6",
+            "fid": "GW_T7GLKVABIFO6OA9ASSWS6CW",
+            "name": "assigned_crew",
+            "basename": "assigned_crew",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_dLza",
+            "fid": "GW_F3UZROPZNW2L1O3ZK",
+            "name": "ctm_notes",
+            "basename": "ctm_notes",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_OWU4",
+            "fid": "GW_NZTSBZB1H2RXU0HP8SHC",
+            "name": "public_road",
+            "basename": "public_road",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_MleD",
+            "fid": "GW_U41E197RVW4ODKBTVI7WNQO",
+            "name": "dxf_file_name",
+            "basename": "dxf_file_name",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_wjWt",
+            "fid": "GW_19D4MYD73K",
+            "name": "team",
+            "basename": "team",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_6Tgc",
+            "fid": "GW_1WU9SE9S6IKWGL6M3ZK0JU7AE1OFU8",
+            "name": "timeline_conflict",
+            "basename": "timeline_conflict",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_67nO",
+            "fid": "GW_1CKX973WK8NNOZNJH0BB5JATA9C",
+            "name": "selected_filter",
+            "basename": "selected_filter",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_cvtO",
+            "fid": "GW_6U2FGF0B2GH4CKGQC0XPTL5BK",
+            "name": "structure_name",
+            "basename": "structure_name",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_mea_key_fid",
+            "fid": "GW_N72PJ8XHCGBP8WPPED8GP4G",
+            "name": "Measure names",
+            "analyticType": "dimension",
+            "semanticType": "nominal"
+          }
+        ],
+        "measures": [
+          {
+            "dragId": "gw_fFPi",
+            "fid": "GW_1NDNC7KIYAV79O2A6GPJ3UKC1U05RK",
+            "name": "difficulty_rating",
+            "basename": "difficulty_rating",
+            "analyticType": "measure",
+            "semanticType": "nominal",
+            "aggName": "sum"
+          },
+          {
+            "dragId": "gw_KZzD",
+            "fid": "GW_LUNKJCWF6FYJPNJ0LSFK",
+            "name": "field_notes",
+            "basename": "field_notes",
+            "analyticType": "measure",
+            "semanticType": "nominal",
+            "aggName": "sum"
+          },
+          {
+            "dragId": "gw_ekvB",
+            "fid": "GW_IFZAZ8EBM33NIFB5HIHZRW1PEUOKS3SIEO",
+            "name": "phase_completion_pct",
+            "basename": "phase_completion_pct",
+            "analyticType": "measure",
+            "semanticType": "quantitative",
+            "aggName": "sum"
+          },
+          {
+            "dragId": "gw_G0UB",
+            "fid": "GW_16APK25SM4Z7U5W2RK55XP14SOG",
+            "name": "dxf_point_count",
+            "basename": "dxf_point_count",
+            "analyticType": "measure",
+            "semanticType": "nominal",
+            "aggName": "sum"
+          },
+          {
+            "dragId": "gw_bImy",
+            "fid": "GW_5VXAXCL4YIGRFI4MEAZC01EEO",
+            "name": "completion_pct",
+            "basename": "completion_pct",
+            "analyticType": "measure",
+            "semanticType": "nominal",
+            "aggName": "sum"
+          },
+          {
+            "dragId": "gw_count_fid",
+            "fid": "gw_count_fid",
+            "name": "Row count",
+            "analyticType": "measure",
+            "semanticType": "quantitative",
+            "aggName": "sum",
+            "computed": true,
+            "expression": {
+              "op": "one",
+              "params": [],
+              "as": "gw_count_fid"
+            }
+          },
+          {
+            "dragId": "gw_mea_val_fid",
+            "fid": "GW_4KYB9KVI3CK37NQAUJ65UJWVK",
+            "name": "Measure values",
+            "analyticType": "measure",
+            "semanticType": "quantitative",
+            "aggName": "sum"
+          }
+        ],
+        "rows": [
+          {
+            "dragId": "gw_JFp2",
+            "fid": "GW_YLR7XTZUR7LBGO9E7UZBIUO",
+            "name": "subcontractor",
+            "basename": "subcontractor",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          }
+        ],
+        "columns": [
+          {
+            "dragId": "gw_HyH5",
+            "fid": "GW_D4V1M0NZYI4TUWHAQ4DUKRJH3DBQ90W",
+            "name": "projected_end_date",
+            "basename": "projected_end_date",
+            "semanticType": "temporal",
+            "analyticType": "dimension"
+          }
+        ],
+        "color": [
+          {
+            "dragId": "gw_7cDk",
+            "fid": "GW_8VZFJZX0D2O",
+            "name": "stage",
+            "basename": "stage",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          }
+        ],
+        "opacity": [],
+        "size": [],
+        "shape": [
+          {
+            "dragId": "gw_IOCe",
+            "fid": "GW_8VZFJZX0D2O",
+            "name": "stage",
+            "basename": "stage",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          }
+        ],
+        "radius": [],
+        "theta": [],
+        "longitude": [],
+        "latitude": [],
+        "geoId": [],
+        "details": [
+          {
+            "dragId": "gw_6Mxm",
+            "fid": "GW_F3UZROPZNW2L1O3ZK",
+            "name": "ctm_notes",
+            "basename": "ctm_notes",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          }
+        ],
+        "filters": [],
+        "text": []
+      },
+      "layout": {
+        "showActions": false,
+        "showTableSummary": false,
+        "stack": "stack",
+        "interactiveScale": false,
+        "zeroScale": true,
+        "size": {
+          "mode": "fixed",
+          "width": 695,
+          "height": 386
+        },
+        "format": {},
+        "geoKey": "name",
+        "resolve": {
+          "x": false,
+          "y": false,
+          "color": false,
+          "opacity": false,
+          "shape": false,
+          "size": true
+        },
+        "scaleIncludeUnmatchedChoropleth": false,
+        "colorPalette": "",
+        "useSvg": false,
+        "scale": {
+          "opacity": {},
+          "size": {}
+        }
+      },
+      "visId": "gw_LyAL",
+      "name": "Projected End Dates by Subcontractor"
+    },
+    {
+      "config": {
+        "defaultAggregated": true,
+        "geoms": [
+          "point"
+        ],
+        "coordSystem": "generic",
+        "limit": -1
+      },
+      "encodings": {
+        "dimensions": [
+          {
+            "dragId": "gw_mioF",
+            "fid": "GW_9CMXNWFAZVSL7J9DDSUHZDBL97HS",
+            "name": "primary_key_line",
+            "basename": "primary_key_line",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_i0LJ",
+            "fid": "GW_1BC83X8WHF5PHDE9704ASFKCJSG",
+            "name": "primary_key_sta",
+            "basename": "primary_key_sta",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_-rwz",
+            "fid": "GW_1CKX6IFAQX9VHROTUKC2PCRNDIO",
+            "name": "second_key_line",
+            "basename": "second_key_line",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_1VUW",
+            "fid": "GW_6TXWZ7RY5SY8OPFG3ZU0Y0IEO",
+            "name": "second_key_sta",
+            "basename": "second_key_sta",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_Fcgn",
+            "fid": "GW_8VZFJZX0D2O",
+            "name": "stage",
+            "basename": "stage",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_RcCF",
+            "fid": "GW_D4V1M0NZYI4TUWHAQ4DUKRJH3DBQ90W",
+            "name": "projected_end_date",
+            "basename": "projected_end_date",
+            "semanticType": "temporal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_U46k",
+            "fid": "GW_2EF4M200TLDKNQR4",
+            "name": "pad_type",
+            "basename": "pad_type",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_XorE",
+            "fid": "GW_YLR7XTZUR7LBGO9E7UZBIUO",
+            "name": "subcontractor",
+            "basename": "subcontractor",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_8CVj",
+            "fid": "GW_UP8NQW4UR48NXS1BFYVLN3K",
+            "name": "foreman_notes",
+            "basename": "foreman_notes",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_a-pX",
+            "fid": "GW_3KT5JCHEB7QF0XU5G0DLB7JNPVLC30POZU40",
+            "name": "next_phase_start_date",
+            "basename": "next_phase_start_date",
+            "semanticType": "temporal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_rfs7",
+            "fid": "GW_2JP96HUO06GDPY2NMTCYDIOPAF36OIYI8",
+            "name": "next_phase_end_date",
+            "basename": "next_phase_end_date",
+            "semanticType": "temporal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_spWp",
+            "fid": "GW_T7GLKVABIFO6OA9ASSWS6CW",
+            "name": "assigned_crew",
+            "basename": "assigned_crew",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_az0t",
+            "fid": "GW_F3UZROPZNW2L1O3ZK",
+            "name": "ctm_notes",
+            "basename": "ctm_notes",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_1RnY",
+            "fid": "GW_NZTSBZB1H2RXU0HP8SHC",
+            "name": "public_road",
+            "basename": "public_road",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_Choi",
+            "fid": "GW_U41E197RVW4ODKBTVI7WNQO",
+            "name": "dxf_file_name",
+            "basename": "dxf_file_name",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_NqO6",
+            "fid": "GW_19D4MYD73K",
+            "name": "team",
+            "basename": "team",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_E7mt",
+            "fid": "GW_1WU9SE9S6IKWGL6M3ZK0JU7AE1OFU8",
+            "name": "timeline_conflict",
+            "basename": "timeline_conflict",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_ewDk",
+            "fid": "GW_1CKX973WK8NNOZNJH0BB5JATA9C",
+            "name": "selected_filter",
+            "basename": "selected_filter",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_Ti2e",
+            "fid": "GW_6U2FGF0B2GH4CKGQC0XPTL5BK",
+            "name": "structure_name",
+            "basename": "structure_name",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          },
+          {
+            "dragId": "gw_mea_key_fid",
+            "fid": "GW_N72PJ8XHCGBP8WPPED8GP4G",
+            "name": "Measure names",
+            "analyticType": "dimension",
+            "semanticType": "nominal"
+          }
+        ],
+        "measures": [
+          {
+            "dragId": "gw_KYgD",
+            "fid": "GW_1NDNC7KIYAV79O2A6GPJ3UKC1U05RK",
+            "name": "difficulty_rating",
+            "basename": "difficulty_rating",
+            "analyticType": "measure",
+            "semanticType": "nominal",
+            "aggName": "sum"
+          },
+          {
+            "dragId": "gw_6xAJ",
+            "fid": "GW_LUNKJCWF6FYJPNJ0LSFK",
+            "name": "field_notes",
+            "basename": "field_notes",
+            "analyticType": "measure",
+            "semanticType": "nominal",
+            "aggName": "sum"
+          },
+          {
+            "dragId": "gw_SMBV",
+            "fid": "GW_IFZAZ8EBM33NIFB5HIHZRW1PEUOKS3SIEO",
+            "name": "phase_completion_pct",
+            "basename": "phase_completion_pct",
+            "analyticType": "measure",
+            "semanticType": "quantitative",
+            "aggName": "sum"
+          },
+          {
+            "dragId": "gw_-UMr",
+            "fid": "GW_16APK25SM4Z7U5W2RK55XP14SOG",
+            "name": "dxf_point_count",
+            "basename": "dxf_point_count",
+            "analyticType": "measure",
+            "semanticType": "nominal",
+            "aggName": "sum"
+          },
+          {
+            "dragId": "gw_yDBf",
+            "fid": "GW_5VXAXCL4YIGRFI4MEAZC01EEO",
+            "name": "completion_pct",
+            "basename": "completion_pct",
+            "analyticType": "measure",
+            "semanticType": "nominal",
+            "aggName": "sum"
+          },
+          {
+            "dragId": "gw_count_fid",
+            "fid": "gw_count_fid",
+            "name": "Row count",
+            "analyticType": "measure",
+            "semanticType": "quantitative",
+            "aggName": "sum",
+            "computed": true,
+            "expression": {
+              "op": "one",
+              "params": [],
+              "as": "gw_count_fid"
+            }
+          },
+          {
+            "dragId": "gw_mea_val_fid",
+            "fid": "GW_4KYB9KVI3CK37NQAUJ65UJWVK",
+            "name": "Measure values",
+            "analyticType": "measure",
+            "semanticType": "quantitative",
+            "aggName": "sum"
+          }
+        ],
+        "rows": [
+          {
+            "dragId": "gw_vyBH",
+            "fid": "GW_6U2FGF0B2GH4CKGQC0XPTL5BK",
+            "name": "structure_name",
+            "basename": "structure_name",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          }
+        ],
+        "columns": [
+          {
+            "dragId": "gw_Yz8Z",
+            "fid": "GW_3KT5JCHEB7QF0XU5G0DLB7JNPVLC30POZU40",
+            "name": "next_phase_start_date",
+            "basename": "next_phase_start_date",
+            "semanticType": "temporal",
+            "analyticType": "dimension"
+          }
+        ],
+        "color": [
+          {
+            "dragId": "gw_WR2g",
+            "fid": "GW_8VZFJZX0D2O",
+            "name": "stage",
+            "basename": "stage",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          }
+        ],
+        "opacity": [],
+        "size": [],
+        "shape": [
+          {
+            "dragId": "gw_ZnzP",
+            "fid": "GW_YLR7XTZUR7LBGO9E7UZBIUO",
+            "name": "subcontractor",
+            "basename": "subcontractor",
+            "semanticType": "nominal",
+            "analyticType": "dimension"
+          }
+        ],
+        "radius": [],
+        "theta": [],
+        "longitude": [],
+        "latitude": [],
+        "geoId": [],
+        "details": [
+          {
+            "dragId": "gw_rJGI",
+            "fid": "GW_2JP96HUO06GDPY2NMTCYDIOPAF36OIYI8",
+            "name": "next_phase_end_date",
+            "basename": "next_phase_end_date",
+            "semanticType": "temporal",
+            "analyticType": "dimension"
+          }
+        ],
+        "filters": [
+          {
+            "dragId": "gw_-i_S",
+            "fid": "GW_1WU9SE9S6IKWGL6M3ZK0JU7AE1OFU8",
+            "name": "timeline_conflict",
+            "basename": "timeline_conflict",
+            "semanticType": "nominal",
+            "analyticType": "dimension",
+            "rule": {
+              "type": "not in",
+              "value": [
+                false
+              ]
+            }
+          }
+        ],
+        "text": []
+      },
+      "layout": {
+        "showActions": false,
+        "showTableSummary": false,
+        "stack": "stack",
+        "interactiveScale": false,
+        "zeroScale": true,
+        "size": {
+          "mode": "fixed",
+          "width": 721,
+          "height": 399
+        },
+        "format": {},
+        "geoKey": "name",
+        "resolve": {
+          "x": false,
+          "y": false,
+          "color": false,
+          "opacity": false,
+          "shape": false,
+          "size": false
+        }
+      },
+      "visId": "gw_hy8c",
+      "name": "Timeline Conflicts by Subcontractor"
+    }
+  ]
