@@ -4,3 +4,5 @@ pandas
 pydeck
 streamlit
 pygwalker
+fsspec
+s3fs
