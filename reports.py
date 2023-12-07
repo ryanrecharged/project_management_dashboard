@@ -35,6 +35,7 @@ def tableau_style(dframe: pd.DataFrame) -> str:
     return pyg.walk(dframe, env='streamlit', spec="config.json", return_html=True, use_preview=True)
 
 def table_display(df: pd.DataFrame, stage_opts: list) -> st.data_editor:
+    
     return st.data_editor(
         df, column_order=(
             'primary_key_line', 'primary_key_sta', 'stage', 
@@ -88,13 +89,15 @@ def display_report_column_options(st_column_containter, df):
     
     st_column_containter.checkbox('Only display conflicts', key='pm_conflicts_only')
     
-    sort_tog = st_column_containter.toggle('Sort by...', key='pm_sort_toggle')
+    sort_tog = st_column_containter.toggle(
+        'Sort by...', key='pm_sort_toggle')
     if sort_tog:
         st_column_containter.radio('label', key="pm_sort_by",
             options=['Stage', 'Station', 'Next Start'],
             label_visibility='collapsed')
         
-    filt_tog = st_column_containter.toggle('Filter by...', key='pm_fliter_toggle')
+    filt_tog = st_column_containter.toggle(
+        'Filter by...', key='pm_fliter_toggle', disabled=True)
     if filt_tog:
         st_column_containter.radio('Filter by...', options=['Stage', 'Subcontractor', 'Crew'],
                           label_visibility='collapsed')

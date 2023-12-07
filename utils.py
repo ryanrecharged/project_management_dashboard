@@ -280,7 +280,6 @@ def save_edited_df(df, save_edits=True):
     store_database_to_aws(df)
     print("~~~~~~~saved~~~~~~~~~")
 
-
 def retrieve_database_from_aws():
     bucket = st.secrets.AWS_BUCKET
     bucket_key = st.secrets.AWS_KEYNAME
