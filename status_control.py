@@ -96,7 +96,7 @@ def _work_complete(df: pd.DataFrame, i: int):
     st.session_state.toggle_update_status = False
     st.session_state.toggle_assign_status = False
     
-    df.to_csv(CONTROL.app_locations()['project_data'])
+    UTILS.save_edited_df(df, save_edits=False)
 
 def _work_notes(df, detail_col):
     if df.iloc[0].field_notes != " " and not pd.isna(df.iloc[0].field_notes):
