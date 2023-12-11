@@ -81,10 +81,10 @@ def report_page():
     # SORT COLUMNS
     if st.session_state.pm_sort_toggle:
         s_val = st.session_state['pm_sort_by']
-        filter_df['stage_map'] = filter_df['stage'].map(CONTROL.project_stages)
-        print(filter_df['stage_map'])
+        #filter_df['stage_map'] = filter_df['stage'].map(CONTROL.project_stages)
+        print(CONTROL.project_stages)
         m = {
-            'Stage' : ['stage_map', 'projected_end_date'],
+            'Stage' : ['stage', 'projected_end_date'],
             'Station' : ['primary_key_line', 'primary_key_sta'],
             'Next Start' : 'next_phase_start_date'
         }
