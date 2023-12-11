@@ -38,17 +38,17 @@ def initialize_state_variables():
 
 def project_stages():
     return {
-        "planning" : {"display_name": "🗂️ Planning", "next" : "stakeout", "subcontractor" : "Burns McDonnell", "team" : "Project Mgmt", "duration_days" : 10, "dual_stage" : True},
-        "stakeout" : {"display_name": "🧭 Stakeout", "next" : "clearing", "subcontractor" : "C.T. Male", "team" : "Survey", "duration_days" : 1, "dual_stage" : True},
-        "brush clearing" : {"display_name": "🌿 Brush clearing", "next" : "stakeout", "subcontractor" : "Supreme", "team" : "Constr.", "duration_days" : 1, "dual_stage" : True},
-        "clearing" : {"display_name": "🪵 Clearing", "next" : "construction", "subcontractor" : "Supreme", "team" : "Constr.", "duration_days" : 1, "dual_stage" : True},
-        "construction" : {"display_name": "🚧 Construction", "next" : "survey offsets", "subcontractor" : "Supreme", "team" : "Constr.", "duration_days" : 4, "dual_stage" : False},
-        "survey offsets" : {"display_name": "🔭 Survey offsets", "next" : "drilling", "subcontractor" : "C.T. Male", "team" : "Survey", "duration_days" : 1, "dual_stage" : False},
-        "drilling" : {"display_name": "🏗️ Drilling", "next" : "line crew", "subcontractor" : "Tri State", "team" : "Drilling", "duration_days" : 4, "dual_stage" : False},
-        "line crew" : {"display_name": "🔩 Line crew", "next" : "live wire", "subcontractor" : "3 Phase", "team" : "Electric", "duration_days" : 3, "dual_stage" : False},
-        "live wire" : {"display_name": "⚡ Live wire", "next" : "as-built", "subcontractor" : "Burns McDonnell", "team" : "Project Mgmt", "duration_days" : 1, "dual_stage" : False},
-        "monitoring" : {"display_name": "🎯 Monitoring", "next" : "live wire", "subcontractor" : "C.T. Male", "team" : "Survey", "duration_days" : 10, "dual_stage" : False},
-        "as-built" : {"display_name": "📸 As-built", "next" : "monitoring", "subcontractor" : "C.T. Male", "team" : "Survey", "duration_days" : 1, "dual_stage" : True},
+        "planning" : {"display_name": "🗂️ Planning", "next" : "stakeout", "subcontractor" : "Burns McDonnell", "team" : "Project Mgmt", "duration_days" : 10, "dual_stage" : True, "stage_order" : 1},
+        "stakeout" : {"display_name": "🧭 Stakeout", "next" : "clearing", "subcontractor" : "C.T. Male", "team" : "Survey", "duration_days" : 1, "dual_stage" : True, "stage_order" : 3},
+        "brush clearing" : {"display_name": "🌿 Brush clearing", "next" : "stakeout", "subcontractor" : "Supreme", "team" : "Constr.", "duration_days" : 1, "dual_stage" : True, "stage_order" : 2},
+        "clearing" : {"display_name": "🪵 Clearing", "next" : "construction", "subcontractor" : "Supreme", "team" : "Constr.", "duration_days" : 1, "dual_stage" : True, "stage_order" : 4},
+        "construction" : {"display_name": "🚧 Construction", "next" : "survey offsets", "subcontractor" : "Supreme", "team" : "Constr.", "duration_days" : 4, "dual_stage" : False, "stage_order" : 5},
+        "survey offsets" : {"display_name": "🔭 Survey offsets", "next" : "drilling", "subcontractor" : "C.T. Male", "team" : "Survey", "duration_days" : 1, "dual_stage" : False, "stage_order" : 6},
+        "drilling" : {"display_name": "🏗️ Drilling", "next" : "line crew", "subcontractor" : "Tri State", "team" : "Drilling", "duration_days" : 4, "dual_stage" : False, "stage_order" : 7},
+        "line crew" : {"display_name": "🔩 Line crew", "next" : "live wire", "subcontractor" : "3 Phase", "team" : "Electric", "duration_days" : 3, "dual_stage" : False, "stage_order" : 8},
+        "live wire" : {"display_name": "⚡ Live wire", "next" : "as-built", "subcontractor" : "Burns McDonnell", "team" : "Project Mgmt", "duration_days" : 1, "dual_stage" : False, "stage_order" : 9},
+        "monitoring" : {"display_name": "🎯 Monitoring", "next" : "live wire", "subcontractor" : "C.T. Male", "team" : "Survey", "duration_days" : 10, "dual_stage" : False, "stage_order" : 10},
+        "as-built" : {"display_name": "📸 As-built", "next" : "monitoring", "subcontractor" : "C.T. Male", "team" : "Survey", "duration_days" : 1, "dual_stage" : True, "stage_order" : 11},
         }
    
 def set_page_confige():
