@@ -174,10 +174,10 @@ def load_initial_dataframe():
     #df = pd.read_csv(CONTROL.app_locations()['project_data'])
     df = retrieve_database_from_aws()
     df.reset_index(inplace=True, drop=True)
-    print(df.head())
     # df = df.drop(columns=["Unnamed: 0"])
     df['internal_id'] = df.index + 5001
     
+    """
     # Expand data to isolate 'primary_keys' only
     df2 = df.copy()
     df2.rename(columns={
@@ -198,6 +198,8 @@ def load_initial_dataframe():
     duplicates = df2['structure_name'].isin(df['structure_name'])
     uniques = df2[~duplicates]
     df = pd.concat([df, uniques], ignore_index=True)
+    
+    """
         
     # App display formatting
     df.primary_key_line.fillna(0, inplace=True)
@@ -215,7 +217,7 @@ def load_initial_dataframe():
                     'second_key_line': 'uint16', 'second_key_sta': 'uint16',
                     'next_phase_start_date': 'datetime64[ns]',
                     'next_phase_end_date': 'datetime64[ns]',
-                    'stage': 'string', 'ctm_notes': 'string'})
+                    'stage': 'string', 'ctm_notes': 'string', 'foreman_notes': 'string'})
     
     # Apply emoji formatting for app display
     df['stage'] = df['stage'].apply(remove_emojis)
