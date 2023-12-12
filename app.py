@@ -13,6 +13,10 @@ import reports
 print('PAGE RELOAD')
 
 CONTROL.set_page_confige()
+
+hide_st_style = CONTROL.apply_custom_css()
+st.markdown(hide_st_style, unsafe_allow_html=True)
+
 CONTROL.initialize_state_variables()
 struct_df = UTILS.load_initial_dataframe()
 
@@ -81,16 +85,16 @@ def report_page():
     # SORT COLUMNS
     if st.session_state.pm_sort_toggle:
         s_val = st.session_state['pm_sort_by']
-        #filter_df['stage_map'] = filter_df['stage'].map(CONTROL.project_stages)
-        print(CONTROL.project_stages)
+        
+        filter_df['stage_map'] = filter_df['stage'].map(CONTROL.project_display_names()).map(CONTROL.project_stages('stage_order'))
+
         m = {
-            'Stage' : ['stage', 'projected_end_date'],
+            'Stage' : ['stage_map', 'projected_end_date'],
             'Station' : ['primary_key_line', 'primary_key_sta'],
-            'Next Start' : 'next_phase_start_date'
         }
         filter_df.sort_values(m[s_val], inplace=True)
     
-    
+    print(filter_df.columns)
     reports.display_report_column_options(report_col2, filter_df)
     reports.display_report_column_tabs([table, tabr1, tabr3], filter_df)
     

@@ -104,8 +104,10 @@ def _work_notes(df, detail_col):
             detail_col.info(f"**{df.iloc[0].assigned_crew} says**: {df.iloc[0].field_notes}")
         else:
             detail_col.info(f"**Notes from the field**: {df.iloc[0].field_notes}")
-        
-    if df.iloc[0].foreman_notes != " " and not pd.isna(df.iloc[0].foreman_notes):
+    print("STATUS REPORT")
+    print(df)
+    print(df['foreman_notes'])
+    if not pd.isna(df.iloc[0].foreman_notes) and df.iloc[0].foreman_notes != " ":
         detail_col.success(f"**Boudreau says**: {df.iloc[0].foreman_notes}")
 
 def work_schedule(df):

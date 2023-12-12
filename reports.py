@@ -18,8 +18,8 @@ def gantt_chart(dframe: pd.DataFrame) -> alt.Chart:
         ['projected_end_date', 'next_phase_start_date', 'next_phase_end_date'],
         as_=['column', 'dates']
         ).mark_bar().encode(
-        x='yearmonthdate(dates):O',
-        y='structure_name:O',
+        alt.X('yearmonthdate(dates):O'),
+        alt.Y('structure_name:O', sort=alt.EncodingSortField(field="structure_name", order='ascending')),
         color=alt.Color('stage:N'),
         opacity=alt.condition(selection, alt.value(1), alt.value(0.2))
     ).properties(
@@ -93,7 +93,7 @@ def display_report_column_options(st_column_containter, df):
         'Sort by...', key='pm_sort_toggle')
     if sort_tog:
         st_column_containter.radio('label', key="pm_sort_by",
-            options=['Stage', 'Station', 'Next Start'],
+            options=['Stage', 'Station'],
             label_visibility='collapsed')
         
     filt_tog = st_column_containter.toggle(

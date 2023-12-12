@@ -217,7 +217,8 @@ def load_initial_dataframe():
                     'second_key_line': 'uint16', 'second_key_sta': 'uint16',
                     'next_phase_start_date': 'datetime64[ns]',
                     'next_phase_end_date': 'datetime64[ns]',
-                    'stage': 'string', 'ctm_notes': 'string', 'foreman_notes': 'string'})
+                    'stage': 'string', 'ctm_notes': 'string', 
+                    'foreman_notes': 'string'})
     
     # Apply emoji formatting for app display
     df['stage'] = df['stage'].apply(remove_emojis)
