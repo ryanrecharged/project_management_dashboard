@@ -26,9 +26,6 @@ def apply_custom_css():
         .e1fqkh3o5 {padding-top: 0.5em; padding-bottom: 0.5rem;}}
         .css-mp6ck8 {border: 2px solid #b16ee6; min-width: 155px; min-height: 60px;}
         .css-50ug3q {color: #593773}
-        .viewerBadge_link__qRIco {visibility: hidden;}
-        .viewerBadge_container__r5tak {visibility: hidden;}
-        .styles_viewerBadge__CvC9N {visibility: hidden;}
         """
     append_tag = f'<style>{default}</style>'
     

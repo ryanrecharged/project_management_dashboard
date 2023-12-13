@@ -129,5 +129,6 @@ def display_report_column_tabs(tabs_list, df):
         buttons.download_button("Download CSV", UTILS.convert_df(df),
                            f"ctm_internal_boonville_{tstmp}.csv",
                            "text/csv")
+        #   buttons.file_uploader("Upload in bulk", type='csv', disabled=True, label_visibility='collapsed')
         buttons.button("Print transaction log", key="button_print_log", disabled=True)
         buttons.button("Add user", key="button_add_user", disabled=True) 

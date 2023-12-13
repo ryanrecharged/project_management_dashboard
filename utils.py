@@ -319,10 +319,13 @@ def validate_login():
     if not st.session_state.logged_in:
         username = st.session_state['login_form_username_key']
         password = st.session_state['login_form_pass_key']
+        
+        d = {'admin' : 'admin',
+             'me' : 'user000'}
 
         # Add logic to validate username and password
         # Using hardcoded "admin" for demo purposes
-        if username == "admin" and password == "admin":
+        if d.get(username.lower()) == password:
             update_session_state("logged_in", True)
             update_session_state("page", "selection")
             update_session_state("login_error", False)

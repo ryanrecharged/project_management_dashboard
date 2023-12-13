@@ -94,7 +94,6 @@ def report_page():
         }
         filter_df.sort_values(m[s_val], inplace=True)
     
-    print(filter_df.columns)
     reports.display_report_column_options(report_col2, filter_df)
     reports.display_report_column_tabs([table, tabr1, tabr3], filter_df)
     
