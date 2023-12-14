@@ -36,9 +36,8 @@ def callback_sessions(modified_state, value):
     st.session_state[modified_state] = st.session_state[value]
     return True
 
-@st.cache_data
 def convert_df(df):
-    # IMPORTANT: Cache the conversion to prevent computation on every rerun
+    df['stage'] = df['stage'].apply(remove_emojis)
     return df.to_csv().encode('utf-8')
 
 def create_list_of_possible_filters(df: pd.DataFrame):
@@ -173,6 +172,8 @@ def load_initial_dataframe():
     # Load data
     #df = pd.read_csv(CONTROL.app_locations()['project_data'])
     df = retrieve_database_from_aws()
+    
+    df.sort_values(['primary_key_line', 'primary_key_sta'], inplace=True)
     df.reset_index(inplace=True, drop=True)
     # df = df.drop(columns=["Unnamed: 0"])
     df['internal_id'] = df.index + 5001
@@ -270,11 +271,13 @@ def save_edited_df(df, save_edits=True):
             row['primary_key_sta']), axis=1)
     
     if save_edits:
+        print(st.session_state.table_editor)
         for _ in st.session_state.table_editor['edited_rows']:
-            df.at[_, 'field_notes'] = ""
-            df.at[_, 'foreman_notes'] = ""
-            df.at[_, 'assigned_crew'] = ""
-            df.at[_, 'phase_completion_pct'] = 0
+            if st.session_state.table_editor['edited_rows'][_].get('stage'):
+                df.at[_, 'field_notes'] = ""
+                df.at[_, 'foreman_notes'] = ""
+                df.at[_, 'assigned_crew'] = ""
+                df.at[_, 'phase_completion_pct'] = 0
         df['selected_filter'] = True
         
     #TODO: Consolidate multiple lines here if all but index, structure_name match

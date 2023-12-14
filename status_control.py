@@ -109,6 +109,8 @@ def _work_notes(df, detail_col):
     print(df['foreman_notes'])
     if not pd.isna(df.iloc[0].foreman_notes) and df.iloc[0].foreman_notes != " ":
         detail_col.success(f"**Boudreau says**: {df.iloc[0].foreman_notes}")
+    elif not pd.isna(df.iloc[0].ctm_notes) and df.iloc[0].ctm_notes != " ":
+        detail_col.success(f"**CTM says**: {df.iloc[0].ctm_notes}")
 
 def work_schedule(df):
     st.write("existing schedule printed here")

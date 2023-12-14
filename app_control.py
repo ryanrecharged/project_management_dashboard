@@ -33,9 +33,10 @@ def apply_custom_css():
 
 def crew_chiefs():
     return {
-        "Lampkin" : {"subcontractor" : "C.T. Male", "no." : "518-775-6702", "email" : "r.lampkin@ctmale.com"},
-        "Skelly" : {"subcontractor" : "C.T. Male", "no." : "518-262-9999", "email" : "r.skelly@ctmale.com"},
-        "Ellison" : {"subcontractor" : "C.T. Male", "no." : "351-555-9876"}
+        "Lampkin" : {"subcontractor" : "C.T. Male", "no." : "518-555-1758",},
+        "Skelly" : {"subcontractor" : "C.T. Male", "no." : "518-555-9999",},
+        "Ellison" : {"subcontractor" : "C.T. Male", "no." : "351-555-9876"},
+        "Chambers" : {"subcontractor" : "C.T. Male", "no." : "315-555-1234"}
     }
     
 def get_state_vars():   

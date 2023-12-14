@@ -35,12 +35,15 @@ def tableau_style(dframe: pd.DataFrame) -> str:
     return pyg.walk(dframe, env='streamlit', spec="config.json", return_html=True, use_preview=True)
 
 def table_display(df: pd.DataFrame, stage_opts: list) -> st.data_editor:
-    
+    crew_opts = [""]
+    cc_dict = CONTROL.crew_chiefs()
+    crew_opts.extend([k for (k,v) in cc_dict.items()])
+        
     return st.data_editor(
         df, column_order=(
             'primary_key_line', 'primary_key_sta', 'stage', 
-            'projected_end_date', 'next_phase_start_date',
-            'next_phase_end_date', 'ctm_notes'),
+            'projected_end_date', 'phase_completion_pct', 'assigned_crew', 
+            'next_phase_start_date', 'ctm_notes'),
         column_config={
             "primary_key_line": st.column_config.NumberColumn(
                 "Line", required=True
@@ -50,25 +53,27 @@ def table_display(df: pd.DataFrame, stage_opts: list) -> st.data_editor:
                 ),
             "stage": st.column_config.SelectboxColumn(
                 "Stage", options=stage_opts,
-                width='medium', required=True
+                required=True
                 ),
             
             "projected_end_date": st.column_config.DateColumn(
-                "Projected Completion",
+                "Completion Date",
                 min_value=date(2023, 1, 1),
                 max_value=date(2024, 12, 31),
                 format="DD.MM.YYYY",
                 step=1,
                 ),
+            "phase_completion_pct": st.column_config.SelectboxColumn(
+                "%", options=[0, 25, 50, 75],
+                required=True
+                ),
+            "assigned_crew": st.column_config.SelectboxColumn(
+                "Crew", options=crew_opts,
+                width='small', required=False
+                ),
+            
             "next_phase_start_date": st.column_config.DateColumn(
                 "Next Phase Start",
-                min_value=date(2023, 1, 1),
-                max_value=date(2024, 12, 31),
-                format="DD.MM.YYYY",
-                step=1,
-                ),
-            "next_phase_end_date": st.column_config.DateColumn(
-                "Next Phase End",
                 min_value=date(2023, 1, 1),
                 max_value=date(2024, 12, 31),
                 format="DD.MM.YYYY",
@@ -126,7 +131,7 @@ def display_report_column_tabs(tabs_list, df):
         
         # Column 1
 
-        buttons.download_button("Download CSV", UTILS.convert_df(df),
+        buttons.download_button("Download CSV", UTILS.convert_df(df.copy()),
                            f"ctm_internal_boonville_{tstmp}.csv",
                            "text/csv")
         #   buttons.file_uploader("Upload in bulk", type='csv', disabled=True, label_visibility='collapsed')

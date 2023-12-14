@@ -98,6 +98,7 @@ def report_page():
     reports.display_report_column_tabs([table, tabr1, tabr3], filter_df)
     
     
+    
 # Main Logic for Navigation
 UTILS.validate_login()
 
