@@ -122,8 +122,9 @@ def display_options_frame(crew_opts, outage_opts, str_opts, df):
     st.markdown('<div class="floating">', unsafe_allow_html=True)
     
     st.caption("Options")
+    st.markdown('<span id="button-after"></span>', unsafe_allow_html=True)
     st.button(
-        "Structure Report", key="button_update_structure", 
+        "Structure Report", key="button_update_structure",
         on_click=UTILS.update_session_state, args=("page", "entry")
         )    
     st.checkbox(

@@ -48,6 +48,29 @@ def apply_custom_floating_container():
     
     return html_style
 
+def apply_custom_button_styling():
+    return """
+        <style>
+        .element-container:has(style){
+            display: none;
+        }
+        #button-after {
+            display: none;
+        }
+        .element-container:has(#button-after) {
+            display: none;
+        }
+        .element-container:has(#button-after) + div button {
+            background-color: 593773cc;
+            border: 2px solid #b16ee6; 
+            margin: 2px; 
+            min-width: 155px; 
+            min-height: 60px;
+            }
+        </style>
+        """
+        
+
 
 def crew_chiefs():
     return {

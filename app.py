@@ -18,6 +18,8 @@ hide_st_style = CONTROL.apply_custom_css()
 st.markdown(hide_st_style, unsafe_allow_html=True)
 floating_container = CONTROL.apply_custom_floating_container()
 st.markdown(floating_container, unsafe_allow_html=True)
+button_style = CONTROL.apply_custom_button_styling()
+st.markdown(button_style, unsafe_allow_html=True)
 
 CONTROL.initialize_state_variables()
 
@@ -72,20 +74,38 @@ def structure_page():
     
     select_tab, update_tab, assign_tab = line_col.tabs(["Select", "Update", "Assign"])
     
-    # TODO: Rename these functions to more descriptive
-    STATUS.filter_options(struct_df, select_tab)
-    STATUS.structure_function(struct_df, select_tab)
+    STATUS.produce_structure_filter(struct_df, select_tab)
+    STATUS.produce_structure_selection(struct_df, select_tab)
     
-    STATUS.work_status(struct_df, update_tab, assign_tab, sta_col)
-    UTILS.create_options_column(opts_col, opt_type="Project Manager")
+    # Structure Status section
+    s_s = UTILS.filter_dataframe_by_select_station(struct_df)
+    STATUS.produce_status_info_column(sta_col, s_s)
+    STATUS.produce_status_notes(sta_col, s_s)
+    STATUS.produce_status_assignment(sta_col, s_s)
+    STATUS.produce_file_hub(sta_col, s_s)
+    
+    # Structure Modification section
+    line = st.session_state.select_line
+    station = st.session_state.select_station
+    if update_tab.toggle(
+        f"Update: **{line}-{station}**", key="toggle_update_status"
+        ):
+        STATUS.produce_update_form(s_s, update_tab, struct_df)
+    if assign_tab.toggle(
+        f"Assign: **{line}-{station}**", key="toggle_assign_status"
+        ):
+        STATUS.produce_assignment_form(s_s, assign_tab, struct_df)
+    
+    # Global options section
+    STATUS.create_options_column(opts_col)
 
 # Report Page
 def report_page():
     
     # Establish page structure
     st.subheader("Project Manager")
-    report_col1, report_col2 = st.columns([5,1])
-    table, tabr1, tabr3  = report_col1.tabs(["Table", "Timeline", "Admin"])
+    report_col, options_col = st.columns([5,1])
+    table, tmline, admin_tab  = report_col.tabs(["Table", "Timeline", "Admin"])
     
     # Filter conflicts
     filter_df = reports.filter_only_conflicts(struct_df)
@@ -97,7 +117,7 @@ def report_page():
     filter_df = reports.filter_dataframe_per_selection(filter_df)
     
     crew_opts = [_ for _ in CONTROL.crew_chiefs().keys()]
-    with report_col2:    
+    with options_col:    
         # Create option lists for controls
         outage_opts = struct_df['outage_no'].unique()
         str_opts = filter_df['structure_name'].unique()
@@ -113,7 +133,7 @@ def report_page():
             on_click=UTILS.save_filtered_df, args=(struct_df, filter_df,)
             )
         
-    with tabr1:
+    with tmline:
         st.altair_chart(
             reports.gantt_chart(filter_df), use_container_width=True
         )
@@ -121,7 +141,7 @@ def report_page():
     # with tabr2: # Tableau-style
     #    stc.html(reports.tableau_style(filter_df), scrolling=True, height=920)
     
-    with tabr3:
+    with admin_tab:
         tstmp = pd.Timestamp.now().strftime("%Y-%m-%d.%H%M")
 
         st.download_button(

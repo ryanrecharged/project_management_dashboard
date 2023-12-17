@@ -5,26 +5,17 @@ import pandas as pd
 import streamlit as st
 
 
-def work_status(df, tab1, tab2, placeholder_col):
-    s = UTILS.filter_dataframe_by_select_station(df)
-    placeholder_col.caption(
+def produce_status_info_column(col, station_frame):
+    col.caption(
         "Info", 
-        help="Lookahead Date refers to expected subsequent stage start date"
+        help="Lookahead Date refers to subsequent stage expected start date"
         )
-
-    if s.timeline_conflict.values[0]:
-        placeholder_col.error("Timeline conflict detected")
     
-    _work_notes(s, placeholder_col)
-    _work_status_text(s, placeholder_col)
-    _work_status_toggles(tab1, tab2)
-    
-    if st.session_state.toggle_update_status:
-        _form_work_status(s, tab1, df)
-    if st.session_state.toggle_assign_status:
-        _form_work_assigment(s, tab2, df)
+    if station_frame.timeline_conflict.values[0]:
+        col.error("Timeline conflict detected")    
               
-def _form_work_assigment(df_row, update_col, df):
+def produce_assignment_form(df_row, update_col, df):
+     
     i = df_row.index[0]
     with st.form(key='assignment_form'):
         crew_opts = [""]
@@ -45,7 +36,8 @@ def _form_work_assigment(df_row, update_col, df):
             value=None, format="YYYY-MM-DD",
             on_change=_insert_spreadsheet_change, args=(df, i, "work_assign_completion_date"))
 
-def _form_work_status(df_row, update_col, df):
+def produce_update_form(df_row, update_col, df):
+    
     i = df_row.index[0]
     with st.form(key='work_status_form'):
         update_col.text_input(
@@ -98,19 +90,22 @@ def _work_complete(df: pd.DataFrame, i: int):
     
     UTILS.save_database_changes(df)
 
-def _work_notes(df, detail_col):
-    if df.iloc[0].field_notes != " " and not pd.isna(df.iloc[0].field_notes):
-        if not pd.isna(df.iloc[0].assigned_crew):
-            detail_col.info(f"**{df.iloc[0].assigned_crew} says**: {df.iloc[0].field_notes}")
+def produce_status_notes(col, df):
+    f_n = df.iloc[0].field_notes
+    r_n = df.iloc[0].foreman_notes
+    m_n = df.iloc[0].ctm_notes
+    crew = df.iloc[0].assigned_crew
+    
+    if f_n != " " and not pd.isna(f_n):
+        if not pd.isna(crew):
+            col.info(f"**{crew} says**: {f_n}")
         else:
-            detail_col.info(f"**Notes from the field**: {df.iloc[0].field_notes}")
-    print("STATUS REPORT")
-    print(df)
-    print(df['foreman_notes'])
-    if not pd.isna(df.iloc[0].foreman_notes) and df.iloc[0].foreman_notes != " ":
-        detail_col.success(f"**Boudreau says**: {df.iloc[0].foreman_notes}")
-    elif not pd.isna(df.iloc[0].ctm_notes) and df.iloc[0].ctm_notes != " ":
-        detail_col.success(f"**CTM says**: {df.iloc[0].ctm_notes}")
+            col.info(f"**Notes from the field**: {f_n}")
+
+    if not pd.isna(r_n) and r_n != " ":
+        col.success(f"**Boudreau says**: {r_n}")
+    elif not pd.isna(m_n) and m_n != " ":
+        col.success(f"**CTM says**: {m_n}")
 
 def work_schedule(df):
     st.write("existing schedule printed here")
@@ -119,25 +114,46 @@ def work_schedule(df):
     if st.session_state.toggle_update_schedule:
         _work_schedule_form()
         
-def _work_status_text(df_row, detail_col):
+def produce_status_assignment(col, df):
+    stage = df.iloc[0].stage
+    contractor = df.iloc[0].subcontractor
+    
     v = {
-        df_row.iloc[0].structure_name : f"{df_row.iloc[0].stage} ({df_row.iloc[0].subcontractor})",
-        "Pad Type" : df_row.iloc[0].pad_type,
-        "Assigned" : df_row.iloc[0].assigned_crew,
-        "Completion Pct" : f'{df_row.iloc[0].phase_completion_pct/100:.0%}',
-        "Lookahead Date" : f'{df_row.iloc[0].next_phase_start_date: %Y-%m-%d}',
+        df.iloc[0].structure_name : f"{stage} ({contractor})",
+        "Pad Type" : df.iloc[0].pad_type,
+        "Assigned" : df.iloc[0].assigned_crew,
+        "Completion Pct" : f'{df.iloc[0].phase_completion_pct/100:.0%}',
+        "Lookahead Date" : f'{df.iloc[0].next_phase_start_date: %Y-%m-%d}',
         }
     
     for _ in v:
         if not pd.isna(v[_]):
-            detail_col.markdown(f"**{_}:** {v[_]}")
+            col.markdown(f"**{_}:** {v[_]}")
 
-def _work_status_toggles(tab1, tab2):
-    line = st.session_state.select_line
-    station = st.session_state.select_station
+def produce_file_hub(st_container, df):
+    if st_container.toggle("Access work files"):
+        
+        st_container.caption('ctm/trav/[file_location]')
+        st_container.link_button("Traverse CSV", url="")
+        
+        st_container.caption('ctm/dxf/[file_location]')
+        st_container.link_button("Boonville DXF", url="")
+        
+        st_container.caption('ctm/str/[file_location]')
+        st_container.link_button("Structures CSV", url="")
+        
+def create_options_column(st_container):
+    st_container.caption("Options")
+    
+    st_container.markdown('<span id="button-after"></span>', unsafe_allow_html=True)
+    st_container.button(
+        "Project Manager", key="button_project_mgr",
+        on_click=UTILS.update_session_state, args=("page", "report")
+        )
 
-    tab1.toggle(f"Update: **{line}-{station}**", key="toggle_update_status", value=False)
-    tab2.toggle(f"Assign: **{line}-{station}**", key="toggle_assign_status", value=False)   
+    st_container.button(
+        "Logout", key="button_logout_structure", on_click=UTILS.logout
+        )
 
 def _work_schedule_form():
     with st.form(key='schedule_form'):
@@ -151,7 +167,7 @@ def _work_schedule_form():
             st.success("Entry Submitted!")
             # Process the input data as needed
 
-def structure_function(df, st_container):
+def produce_structure_selection(df, st_container):
     # Select Line
     filt_df = df.loc[df.selected_filter == True]
     line_keys = [*filt_df.primary_key_line.unique()]
@@ -171,7 +187,7 @@ def structure_function(df, st_container):
         options=sorted([i for i in station_keys if i != 0]),
         on_change=UTILS.reset_session_state) 
     
-def filter_options(df, st_container):
+def produce_structure_filter(df, st_container):
     v = UTILS.create_list_of_possible_filters(df)
     filter_options = UTILS.compose_filter_options(v)
     

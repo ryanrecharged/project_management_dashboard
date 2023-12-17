@@ -54,21 +54,6 @@ def create_list_of_possible_filters(df: pd.DataFrame):
                          "column": "timeline_conflict"}
         }
     return v
-
-def create_options_column(st_container, opt_type="Project Manager"):
-    st_container.caption("Options")
-    
-    if opt_type == "Project Manager":
-        st_container.button("Project Manager", 
-                            key="button_project_mgr", 
-                            on_click=update_session_state, 
-                            args=("page", "report")
-                            )
-    elif opt_type == "Structure Report":
-        pass
-    st_container.button("Logout", 
-                        key="button_logout_structure", on_click=logout
-                        )
         
 def compose_filter_options(v: dict) -> list:
     filter_options = []
