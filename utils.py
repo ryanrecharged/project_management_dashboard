@@ -120,7 +120,7 @@ def filter_dataframe_by_multiselect(df: pd.DataFrame) -> pd.DataFrame:
         df['selected_filter'] = False
         df = _multiselect_loop(df)       
             
-    save_edited_df(df, save_edits=False)    
+    save_database_changes(df)    
 
 def filter_dataframe_by_select_station(df: pd.DataFrame) -> pd.DataFrame:
     line = st.session_state.select_line
@@ -257,7 +257,7 @@ def reset_session_state():
     st.session_state.field_notes = ""
     st.session_state.foreman_notes = ""
 
-def save_edited_df(df, save_edits=True):
+def save_database_changes(df):
     df['stage'] = df['stage'].apply(remove_emojis)
     df['subcontractor'] = df['stage'].apply(apply_subcontractor)
     df['team'] = df['stage'].apply(apply_team)
@@ -270,21 +270,41 @@ def save_edited_df(df, save_edits=True):
             row['primary_key_line'], 
             row['primary_key_sta']), axis=1)
     
-    if save_edits:
-        print(st.session_state.table_editor)
-        for _ in st.session_state.table_editor['edited_rows']:
-            if st.session_state.table_editor['edited_rows'][_].get('stage'):
-                df.at[_, 'field_notes'] = ""
-                df.at[_, 'foreman_notes'] = ""
-                df.at[_, 'assigned_crew'] = ""
-                df.at[_, 'phase_completion_pct'] = 0
-        df['selected_filter'] = True
-        
     #TODO: Consolidate multiple lines here if all but index, structure_name match
     #df = consolidate_duplicates(df)
         
     store_database_to_aws(df)
     print("~~~~~~~saved~~~~~~~~~")
+
+def save_filtered_df(df, filter_df):
+
+    er = st.session_state.table_editor['edited_rows']
+    
+    for _ in er:
+        id = filter_df.iloc[_]['internal_id']
+        idx = df.loc[df['internal_id'] == id].index[0]
+        
+        # Reset on stage change
+        if er[_].get('stage'):
+            df.at[idx, 'field_notes'] = ""
+            df.at[idx, 'foreman_notes'] = ""
+            df.at[idx, 'assigned_crew'] = ""
+            df.at[idx, 'phase_completion_pct'] = 0
+        
+        # Update dframe with modified values
+        for each in er[_]:
+            df.at[idx, each] = er[_][each]
+            
+    df['selected_filter'] = True
+    save_database_changes(df)
+
+def save_crew_assignment(df):
+    id = st.session_state['form_set_structure']
+    idx = df.loc[df['structure_name'] == id].index[0]
+    df.at[idx, 'assigned_crew'] = st.session_state['form_set_crew']
+    df.at[idx, 'foreman_notes'] = st.session_state['form_set_notes']
+    
+    save_database_changes(df)
 
 def retrieve_database_from_aws():
     bucket = st.secrets.AWS_BUCKET

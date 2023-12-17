@@ -16,9 +16,20 @@ CONTROL.set_page_confige()
 
 hide_st_style = CONTROL.apply_custom_css()
 st.markdown(hide_st_style, unsafe_allow_html=True)
+floating_container = CONTROL.apply_custom_floating_container()
+st.markdown(floating_container, unsafe_allow_html=True)
 
 CONTROL.initialize_state_variables()
-struct_df = UTILS.load_initial_dataframe()
+
+try:
+    struct_df = UTILS.load_initial_dataframe()
+except:
+    st.session_state.page = 'refresh'
+    
+# No internet
+def no_internet():
+    st.warning("Need network connection to access database")
+    st.error("Connect to internet and refresh page")
 
 # Login
 def login():
@@ -70,35 +81,71 @@ def structure_page():
 
 # Report Page
 def report_page():
+    
+    # Establish page structure
     st.subheader("Project Manager")
     report_col1, report_col2 = st.columns([5,1])
-    table, tabr1, tabr3  = report_col1.tabs(
-        ["Table", "Timeline", "Admin"]
+    table, tabr1, tabr3  = report_col1.tabs(["Table", "Timeline", "Admin"])
+    
+    # Filter conflicts
+    filter_df = reports.filter_only_conflicts(struct_df)
+    
+    # Sort dataframe
+    filter_df = reports.sort_dataframe_per_selection(filter_df)
+    
+    # Filter by selection
+    filter_df = reports.filter_dataframe_per_selection(filter_df)
+    
+    crew_opts = [_ for _ in CONTROL.crew_chiefs().keys()]
+    with report_col2:    
+        # Create option lists for controls
+        outage_opts = struct_df['outage_no'].unique()
+        str_opts = filter_df['structure_name'].unique()
+        
+        # Generate "options" column
+        reports.display_options_frame(crew_opts, outage_opts, str_opts, struct_df)
+        
+    with table:
+        stage_opts = [v['display_name'] for (k,v) in CONTROL.project_stages().items()]
+        reports.table_display(filter_df, stage_opts, crew_opts)
+                    
+        st.button("Save Changes", 
+            on_click=UTILS.save_filtered_df, args=(struct_df, filter_df,)
+            )
+        
+    with tabr1:
+        st.altair_chart(
+            reports.gantt_chart(filter_df), use_container_width=True
         )
     
-    # FILTER CONFLICTS
-    if st.session_state.pm_conflicts_only:
-        filter_df = struct_df.loc[struct_df['timeline_conflict'] == True].copy()
-    else:
-        filter_df = struct_df.copy()
+    # with tabr2: # Tableau-style
+    #    stc.html(reports.tableau_style(filter_df), scrolling=True, height=920)
     
-    # SORT COLUMNS
-    if st.session_state.pm_sort_toggle:
-        s_val = st.session_state['pm_sort_by']
-        
-        filter_df['stage_map'] = filter_df['stage'].map(CONTROL.project_display_names()).map(CONTROL.project_stages('stage_order'))
+    with tabr3:
+        tstmp = pd.Timestamp.now().strftime("%Y-%m-%d.%H%M")
 
-        m = {
-            'Stage' : ['stage_map', 'projected_end_date'],
-            'Station' : ['primary_key_line', 'primary_key_sta'],
-        }
-        filter_df.sort_values(m[s_val], inplace=True)
-    
-    reports.display_report_column_options(report_col2, filter_df)
-    reports.display_report_column_tabs([table, tabr1, tabr3], filter_df)
-    
-    
-    
+        st.download_button(
+            "Download CSV", UTILS.convert_df(struct_df.copy()),
+            f"ctm_internal_boonville_{tstmp}.csv", "text/csv"
+            )
+        st.button("Print transaction log", key="button_print_log", disabled=True)
+        st.button("Add user", key="button_add_user", disabled=True)
+        with st.expander("File repository"):
+            
+            with st.form('file_uploader', clear_on_submit=True, border=False):
+                col1, col2 = st.columns(2)
+                with col1:
+                    st.file_uploader('STRUCTURE HUBS', type='csv')
+                    st.file_uploader('DXF FILES', type='dxf')
+                    st.file_uploader('CONTROL POINTS', type='csv')
+                
+                with col2:
+                    col2.checkbox('Assign to all structure reports')
+                    col2.selectbox("Structures to associate", options=['Single', 'All', 'Multi'])
+            
+                st.form_submit_button('Upload')
+
+
 # Main Logic for Navigation
 UTILS.validate_login()
 
@@ -110,4 +157,6 @@ elif st.session_state.page == "entry":
     structure_page()
 elif st.session_state.page == "report":
     report_page()
+elif st.session_state.page == "refresh":
+    no_internet()
 

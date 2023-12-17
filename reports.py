@@ -13,32 +13,62 @@ from datetime import date
 
 def gantt_chart(dframe: pd.DataFrame) -> alt.Chart:
     selection = alt.selection_point(fields=['stage'], bind='legend')
+    interval = alt.selection_interval(encodings=['x'])
     
-    chart = alt.Chart(dframe).transform_fold(
+    color = alt.condition(selection,
+        alt.Color('stage:N', scale=alt.Scale(
+            domain=[k for k in CONTROL.project_display_names()],
+            range=['#4CBB17', '#03396c', '#c6c6c6', '#c6c6c6', '#c6c6c6', 
+                   '#3137fd', '#c6c6c6', '#c6c6c6', '#fff600', '#005b96', 
+                   '#2c75ff'],
+            )),
+        alt.value('lightgrey'))
+    
+    base = alt.Chart(dframe).transform_fold(
         ['projected_end_date', 'next_phase_start_date', 'next_phase_end_date'],
         as_=['column', 'dates']
         ).mark_bar().encode(
-        alt.X('yearmonthdate(dates):O'),
-        alt.Y('structure_name:O', sort=alt.EncodingSortField(field="structure_name", order='ascending')),
-        color=alt.Color('stage:N'),
-        opacity=alt.condition(selection, alt.value(1), alt.value(0.2))
+        alt.X('yearmonthdate(dates):O', title=''),
+        alt.Y('structure_name:O', title='', 
+              sort=alt.EncodingSortField(field="index", order='ascending')),
+        color=color,
+        opacity=alt.condition(selection, alt.value(1.0), alt.value(0.2))
     ).properties(
         title='',
     ).add_params(
         selection
     )
+
+    chart = base.encode(
+        x=alt.X('yearmonthdate(dates):O', title='', scale=alt.Scale(domain=interval.ref()))
+    ).properties(
+        width=900
+    )
+
+    view = base.encode(
+        y=alt.Y('structure_name:O', title='', axis=alt.Axis(labels=False))
+    ).add_selection(
+        interval
+    ).properties(
+        width=900,
+        height=50,
+    )
     
-    return chart
+    rules = alt.Chart(pd.DataFrame({
+        'Date': [pd.Timestamp('2023-12-17'), pd.Timestamp('2023-12-29')],
+        'color': ['red', 'orange']
+    })).mark_rule().encode(
+        x='yearmonthdate(Date):O',
+        color=alt.Color('color:N', scale=None)
+    )
+
+    return view & chart
     
 def tableau_style(dframe: pd.DataFrame) -> str:
 
     return pyg.walk(dframe, env='streamlit', spec="config.json", return_html=True, use_preview=True)
 
-def table_display(df: pd.DataFrame, stage_opts: list) -> st.data_editor:
-    crew_opts = [""]
-    cc_dict = CONTROL.crew_chiefs()
-    crew_opts.extend([k for (k,v) in cc_dict.items()])
-        
+def table_display(df: pd.DataFrame, stage_opts: list, crew_opts: list) -> st.data_editor:       
     return st.data_editor(
         df, column_order=(
             'primary_key_line', 'primary_key_sta', 'stage', 
@@ -87,53 +117,107 @@ def table_display(df: pd.DataFrame, stage_opts: list) -> st.data_editor:
         num_rows="dynamic", height=500, key="table_editor",
         )
 
-def display_report_column_options(st_column_containter, df):
-    st_column_containter.caption("Options")
-    st_column_containter.button("Structure Report", key="button_update_structure", 
-                    on_click=UTILS.update_session_state, args=("page", "entry"))
+def display_options_frame(crew_opts, outage_opts, str_opts, df):    
+    # Enable floating menu
+    st.markdown('<div class="floating">', unsafe_allow_html=True)
     
-    st_column_containter.checkbox('Only display conflicts', key='pm_conflicts_only')
+    st.caption("Options")
+    st.button(
+        "Structure Report", key="button_update_structure", 
+        on_click=UTILS.update_session_state, args=("page", "entry")
+        )    
+    st.checkbox(
+        'Only display conflicts', key='pm_conflicts_only'
+        )
+    if st.toggle('Sort by...', key='pm_sort_toggle'):
+        _display_sort_options()
     
-    sort_tog = st_column_containter.toggle(
-        'Sort by...', key='pm_sort_toggle')
-    if sort_tog:
-        st_column_containter.radio('label', key="pm_sort_by",
-            options=['Stage', 'Station'],
-            label_visibility='collapsed')
+    if st.toggle('Filter by...', key='pm_filter_toggle'):
+        _display_filter_options(crew_opts, outage_opts)
         
-    filt_tog = st_column_containter.toggle(
-        'Filter by...', key='pm_fliter_toggle', disabled=True)
-    if filt_tog:
-        st_column_containter.radio('Filter by...', options=['Stage', 'Subcontractor', 'Crew'],
-                          label_visibility='collapsed')
-        st_column_containter.selectbox('Filter by Stage', 
-            options=[v['display_name'] for (k,v) in CONTROL.project_stages().items()],
-            label_visibility="collapsed")
-    
-    st_column_containter.button("Logout", key="button_logout_report", on_click=UTILS.logout)
+    with st.expander("Assign Structure"):
+        _display_assignment_expansion(crew_opts, str_opts, df)
+        
+    st.button("Logout", key="button_logout_report", on_click=UTILS.logout)
+        
+    # Close floating container
+    st.markdown('</div>', unsafe_allow_html=True)
 
-def display_report_column_tabs(tabs_list, df):
-    
-    with tabs_list[1]: # Gantt chart
-        st.altair_chart(gantt_chart(df), use_container_width=True)
-        
-    # with tabs_list[2]: # Tableau-style
-    #     stc.html(tableau_style(df), scrolling=True, height=920)
-        
-    with tabs_list[0]: # Table
-        opts = [v['display_name'] for (k,v) in CONTROL.project_stages().items()]
-        edf = table_display(df, opts)
-        st.button("Save Changes", on_click=UTILS.save_edited_df, args=(edf,))
-    
-    with tabs_list[2]: # Admin
-        buttons, days_per = st.columns(2)
-        tstmp = pd.Timestamp.now().strftime("%Y-%m-%d.%H%M")
-        
-        # Column 1
+def _display_sort_options():
+    st.radio(
+        'label', key="pm_sort_by", options=['Stage', 'Station'],
+        label_visibility='collapsed'
+        )
 
-        buttons.download_button("Download CSV", UTILS.convert_df(df.copy()),
-                           f"ctm_internal_boonville_{tstmp}.csv",
-                           "text/csv")
-        #   buttons.file_uploader("Upload in bulk", type='csv', disabled=True, label_visibility='collapsed')
-        buttons.button("Print transaction log", key="button_print_log", disabled=True)
-        buttons.button("Add user", key="button_add_user", disabled=True) 
+def _display_filter_options(crew_opts, outage_opts):        
+    
+    f_s = st.session_state.chart_filter_selection
+    
+    st.radio(
+        'Filter by...', options=['Crew', 'Outage No.'],
+        key="chart_filter_selection", label_visibility='collapsed'
+        )
+    st.selectbox(
+        'Filter choices', key="chart_filter_choice",
+        options=crew_opts if f_s.lower() == "crew" else outage_opts,
+        index=None, placeholder="Select choice",
+        label_visibility="collapsed"
+        )
+
+def _display_assignment_expansion(crew_opts, str_opts, df):
+    with st.form("assign_form", clear_on_submit=True, border=False):
+        st.selectbox(
+            "Structure", options=str_opts, index=None, 
+            key = "form_set_structure",
+            label_visibility="collapsed", placeholder="Choose structure"
+            )
+        st.selectbox(
+            "Field crew", options=crew_opts, index=None, 
+            key = "form_set_crew",
+            label_visibility="collapsed", placeholder="Select team"
+            )
+        st.text_input(
+            "Notes to field crew", placeholder="Provide instructions", 
+            key = "form_set_notes",
+            label_visibility="collapsed"
+            )
+        
+        st.form_submit_button(
+            "Assign", on_click=UTILS.save_crew_assignment, args=(df,)
+            )
+           
+def filter_only_conflicts(df):
+    if st.session_state.pm_conflicts_only:
+        return df.loc[df['timeline_conflict'] == True].copy()
+    else:
+        return df.copy()
+    
+def sort_dataframe_per_selection(df):
+    if st.session_state.pm_sort_toggle:
+        s_val = st.session_state['pm_sort_by']
+        
+        df['stage_map'] = df['stage'].map(CONTROL.project_display_names()).map(CONTROL.project_stages('stage_order'))
+
+        m = {
+            'Stage' : ['stage_map', 'projected_end_date'],
+            'Station' : ['primary_key_line', 'primary_key_sta'],
+        }
+        df.sort_values(m[s_val], inplace=True)
+        
+    return df
+
+def filter_dataframe_per_selection(df):
+    if st.session_state.pm_filter_toggle:
+        filter_type = st.session_state.chart_filter_selection
+        filter_choice = st.session_state.chart_filter_choice
+        if filter_type.lower() == 'crew':
+            if filter_choice == None or filter_choice == "":
+                return df
+            else:
+                return df.loc[df['assigned_crew'] == filter_choice]
+        else:
+            if filter_choice == None or filter_choice == "":
+                return df
+            else:
+                return df.loc[df['outage_no'] == filter_choice]
+    return df

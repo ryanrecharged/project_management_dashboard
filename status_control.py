@@ -76,7 +76,7 @@ def _insert_spreadsheet_change(df: pd.DataFrame, i: int, state_key: str) -> None
         }
     
     df.at[i, d[state_key]] = st.session_state[state_key]
-    UTILS.save_edited_df(df, save_edits=False)
+    UTILS.save_database_changes(df)
      
 def _work_complete(df: pd.DataFrame, i: int):
     
@@ -96,7 +96,7 @@ def _work_complete(df: pd.DataFrame, i: int):
     st.session_state.toggle_update_status = False
     st.session_state.toggle_assign_status = False
     
-    UTILS.save_edited_df(df, save_edits=False)
+    UTILS.save_database_changes(df)
 
 def _work_notes(df, detail_col):
     if df.iloc[0].field_notes != " " and not pd.isna(df.iloc[0].field_notes):

@@ -31,6 +31,24 @@ def apply_custom_css():
     
     return append_tag
 
+def apply_custom_floating_container():
+    html_style = '''
+        <style>
+        div:has( >.element-container div.floating) {
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+        }
+
+        div.floating {
+            height:0%;
+        }
+        </style>
+    '''
+    
+    return html_style
+
+
 def crew_chiefs():
     return {
         "Lampkin" : {"subcontractor" : "C.T. Male", "no." : "518-555-1758",},
@@ -41,6 +59,8 @@ def crew_chiefs():
     
 def get_state_vars():   
     state_vars = {
+        'chart_filter_choice' : "",
+        'chart_filter_selection' : 'Crew',
         'login_error' : False,
         'logged_in' : False,
         'login_error_message' : '',
@@ -51,6 +71,7 @@ def get_state_vars():
         'login_form_pass_key' : '',
         'multiselect_structure_filter' : [],
         'pm_conflicts_only': False,
+        'pm_filter_toggle': False,
         'pm_sort_by' : 'Stage',
         'pm_sort_toggle' : False,
         }
