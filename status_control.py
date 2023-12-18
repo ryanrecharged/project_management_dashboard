@@ -133,14 +133,19 @@ def produce_status_assignment(col, df):
 def produce_file_hub(st_container, df):
     if st_container.toggle("Access work files"):
         
-        st_container.caption('ctm/trav/[file_location]')
-        st_container.link_button("Traverse CSV", url="")
+        aws_url = st.secrets.AWS_LONG_FORM
+        trav_link = f"trav/{df.iloc[0].trav_location}"
+        dxf_link = f"dxf/{df.iloc[0].dxf_location}"
+        str_link = f"str/{df.iloc[0].structure_location}"
         
-        st_container.caption('ctm/dxf/[file_location]')
-        st_container.link_button("Boonville DXF", url="")
+        st_container.caption(f'ctm/{trav_link}')
+        st_container.link_button("Traverse CSV", url=f'{aws_url}{trav_link}')
         
-        st_container.caption('ctm/str/[file_location]')
-        st_container.link_button("Structures CSV", url="")
+        st_container.caption(f'ctm/{dxf_link}')
+        st_container.link_button("Boonville DXF", url=f'{aws_url}{dxf_link}')
+        
+        st_container.caption(f'ctm/{str_link}')
+        st_container.link_button("Structures CSV", url=f'{aws_url}{str_link}')
         
 def create_options_column(st_container):
     st_container.caption("Options")

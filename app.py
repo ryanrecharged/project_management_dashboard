@@ -1,11 +1,9 @@
 import app_control as CONTROL
-import data as DATA
 import status_control as STATUS
 import utils as UTILS
 
 import streamlit as st
 import pandas as pd
-import altair as alt
 
 import reports
 

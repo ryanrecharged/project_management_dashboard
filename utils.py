@@ -41,10 +41,7 @@ def convert_df(df):
     return df.to_csv().encode('utf-8')
 
 def create_list_of_possible_filters(df: pd.DataFrame):
-    print('PRINTING TIMELINE CONFLICTS')
-    x = [*df.timeline_conflict.unique()]
-    print(x)
-    print(sorted(x, reverse=True))
+
     v = {
         "Sub: " : {"opts": [*df.subcontractor.unique()],
                    "column": "subcontractor"},
