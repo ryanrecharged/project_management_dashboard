@@ -172,10 +172,38 @@ def report_page():
                             aws_access_key_id=st.secrets.AWS_ACCESS_KEY_ID,
                             aws_secret_access_key=st.secrets.AWS_SECRET_ACCESS_KEY,
                         )
-
-                        name = f"ctm/trav_ryan.csv"
+                        
+                        ts = pd.Timestamp.now().strftime("%Y%m%d.%H%M")
+                        name = f"{st.secrets.AWS_TRAV_KEY}{ts}.csv"
                         s3.upload_fileobj(trav, st.secrets.AWS_BUCKET, name)
-                        # TODO: assign file name to column and save database/csv
+                        struct_df['trav_location'] = f'pm_{ts}.csv'
+                        UTILS.save_database_changes(struct_df)
+                    if dxf is not None:
+                        s3 = boto3.client(
+                            service_name="s3",
+                            region_name=st.secrets.AWS_S3_REGION,
+                            aws_access_key_id=st.secrets.AWS_ACCESS_KEY_ID,
+                            aws_secret_access_key=st.secrets.AWS_SECRET_ACCESS_KEY,
+                        )
+                        
+                        ts = pd.Timestamp.now().strftime("%Y%m%d.%H%M")
+                        name = f"{st.secrets.AWS_DXF_KEY}{ts}.csv"
+                        s3.upload_fileobj(dxf, st.secrets.AWS_BUCKET, name)
+                        struct_df['dxf_location'] = f'pm_{ts}.csv'
+                        UTILS.save_database_changes(struct_df)
+                    if hubs is not None:
+                        s3 = boto3.client(
+                            service_name="s3",
+                            region_name=st.secrets.AWS_S3_REGION,
+                            aws_access_key_id=st.secrets.AWS_ACCESS_KEY_ID,
+                            aws_secret_access_key=st.secrets.AWS_SECRET_ACCESS_KEY,
+                        )
+                        
+                        ts = pd.Timestamp.now().strftime("%Y%m%d.%H%M")
+                        name = f"{st.secrets.AWS_STR_KEY}{ts}.csv"
+                        s3.upload_fileobj(hubs, st.secrets.AWS_BUCKET, name)
+                        struct_df['structure_location'] = f'pm_{ts}.csv'
+                        UTILS.save_database_changes(struct_df)
                 
                 with col2:
                     col2.checkbox(
