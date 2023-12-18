@@ -69,7 +69,9 @@ def menu():
 # Structure Page
 def structure_page():
     st.subheader("Structure Report")
-    line_col, sta_col, opts_col = st.columns([2, 3, 3])
+    st.markdown("***")
+    st.caption('Boonville, NY: National Grid SmartPath Connect PNO 22.2654')
+    line_col, sta_col, spcr_col, opts_col = st.columns([3, 4, 3, 2])
     
     select_tab, update_tab, assign_tab = line_col.tabs(["Select", "Update", "Assign"])
     
@@ -103,6 +105,8 @@ def report_page():
     
     # Establish page structure
     st.subheader("Project Manager")
+    st.markdown("***")
+    st.caption('Boonville, NY: National Grid SmartPath Connect PNO 22.2654')
     report_col, options_col = st.columns([5,1])
     table, tmline, admin_tab  = report_col.tabs(["Table", "Timeline", "Admin"])
     
@@ -142,7 +146,7 @@ def report_page():
         
     with tmline:
         st.altair_chart(
-            reports.gantt_chart(filter_df), use_container_width=True
+            reports.gantt_chart(filter_df), use_container_width=False
         )
     
     # with tabr2: # Tableau-style

@@ -148,6 +148,9 @@ def produce_file_hub(st_container, df):
         st_container.link_button("Structures CSV", url=f'{aws_url}{str_link}')
         
 def create_options_column(st_container):
+    # Enable floating menu
+    st_container.markdown('<div class="floating">', unsafe_allow_html=True)
+    
     st_container.caption("Options")
     
     st_container.markdown('<span id="button-after"></span>', unsafe_allow_html=True)
