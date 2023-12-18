@@ -66,7 +66,19 @@ def apply_custom_button_styling():
             margin: 2px; 
             min-width: 155px; 
             min-height: 60px;
-            }
+        }
+        
+        #button-pending {
+            display: none;
+        }
+        .element-container:has(#button-pending) {
+            display: none;
+        }
+        .element-container:has(#button-pending) + div button {
+            background-color: 593773cc;
+            border: 2px solid #ff7900; 
+            margin: 2px; 
+        }
         </style>
         """
         

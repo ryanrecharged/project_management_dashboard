@@ -128,7 +128,15 @@ def report_page():
     with table:
         stage_opts = [v['display_name'] for (k,v) in CONTROL.project_stages().items()]
         reports.table_display(filter_df, stage_opts, crew_opts)
-                    
+        
+        er = st.session_state.table_editor['edited_rows']
+        ar = st.session_state.table_editor['added_rows']
+        dr = st.session_state.table_editor['deleted_rows']
+        if len(er) + len(ar) + len(dr) == 0:
+            pass
+        else:
+            st.markdown('<span id="button-pending"></span>', unsafe_allow_html=True)
+            
         st.button("Save Changes", 
             on_click=UTILS.save_filtered_df, args=(struct_df, filter_df,)
             )
@@ -160,8 +168,15 @@ def report_page():
                     st.file_uploader('CONTROL POINTS', type='csv')
                 
                 with col2:
-                    col2.checkbox('Assign to all structure reports')
-                    col2.selectbox("Structures to associate", options=['Single', 'All', 'Multi'])
+                    col2.checkbox(
+                        'Assign to all structure reports', 
+                        value=True, disabled=True
+                        )
+                    col2.selectbox(
+                        "Structures to associate", 
+                        options=['All', 'Single', 'Multi'],
+                        index=0, label_visibility='collapsed',
+                        disabled=True)
             
                 st.form_submit_button('Upload')
 

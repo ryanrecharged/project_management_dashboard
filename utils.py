@@ -264,7 +264,7 @@ def save_database_changes(df):
 def save_filtered_df(df, filter_df):
 
     er = st.session_state.table_editor['edited_rows']
-    
+    print(st.session_state.table_editor)
     for _ in er:
         id = filter_df.iloc[_]['internal_id']
         idx = df.loc[df['internal_id'] == id].index[0]
@@ -279,7 +279,8 @@ def save_filtered_df(df, filter_df):
         # Update dframe with modified values
         for each in er[_]:
             df.at[idx, each] = er[_][each]
-            
+    
+    # This sets all rows to be selected, undo-ing filtering
     df['selected_filter'] = True
     save_database_changes(df)
 
