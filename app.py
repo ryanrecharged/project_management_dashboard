@@ -1,3 +1,4 @@
+import boto3
 import app_control as CONTROL
 import status_control as STATUS
 import utils as UTILS
@@ -161,9 +162,20 @@ def report_page():
             with st.form('file_uploader', clear_on_submit=True, border=False):
                 col1, col2 = st.columns(2)
                 with col1:
-                    st.file_uploader('STRUCTURE HUBS', type='csv')
-                    st.file_uploader('DXF FILES', type='dxf')
-                    st.file_uploader('CONTROL POINTS', type='csv')
+                    hubs = st.file_uploader('STRUCTURE HUBS', type='csv')
+                    dxf = st.file_uploader('DXF FILES', type='dxf')
+                    trav = st.file_uploader('CONTROL POINTS', type='csv')
+                    if trav is not None:
+                        s3 = boto3.client(
+                            service_name="s3",
+                            region_name=st.secrets.AWS_S3_REGION,
+                            aws_access_key_id=st.secrets.AWS_ACCESS_KEY_ID,
+                            aws_secret_access_key=st.secrets.AWS_SECRET_ACCESS_KEY,
+                        )
+
+                        name = f"ctm/trav_ryan.csv"
+                        s3.upload_fileobj(trav, st.secrets.AWS_BUCKET, name)
+                        # TODO: assign file name to column and save database/csv
                 
                 with col2:
                     col2.checkbox(
