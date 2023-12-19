@@ -100,7 +100,7 @@ def structure_page():
     
     # Global options section
     # Enable floating menu
-    st_container.markdown('<span id="floating"></span>', unsafe_allow_html=True)
+    st.markdown('<span id="floating"></span>', unsafe_allow_html=True)
     STATUS.create_options_column(opts_col)
 
 # Report Page
