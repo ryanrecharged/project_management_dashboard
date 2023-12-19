@@ -114,8 +114,6 @@ def table_display(df: pd.DataFrame, stage_opts: list, crew_opts: list) -> st.dat
         )
 
 def display_options_frame(crew_opts, outage_opts, str_opts, df):    
-
-    
     st.caption("Options")
     st.markdown('<span id="button-after"></span>', unsafe_allow_html=True)
     st.button(
