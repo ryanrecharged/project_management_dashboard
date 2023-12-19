@@ -36,6 +36,7 @@ def apply_custom_floating_container():
         <style>
         div:has( >.element-container div.floating) {
             display: flex;
+            flex-direction: column;
         }
 
         div.floating {
