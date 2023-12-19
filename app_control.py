@@ -41,8 +41,9 @@ def apply_custom_floating_container():
         }
 
         div.floating {
-            height:0%;
+            height:100%;
         }
+        
         
         </style>
     '''
