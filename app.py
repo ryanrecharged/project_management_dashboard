@@ -99,6 +99,8 @@ def structure_page():
         STATUS.produce_assignment_form(s_s, assign_tab, struct_df)
     
     # Global options section
+    # Enable floating menu
+    st_container.markdown('<span id="floating"></span>', unsafe_allow_html=True)
     STATUS.create_options_column(opts_col)
 
 # Report Page
@@ -121,6 +123,9 @@ def report_page():
     filter_df = reports.filter_dataframe_per_selection(filter_df)
     
     crew_opts = [_ for _ in CONTROL.crew_chiefs().keys()]
+    
+    # Enable floating menu
+    st.markdown('<span id="floating"></span>', unsafe_allow_html=True)
     with options_col:    
         # Create option lists for controls
         outage_opts = struct_df['outage_no'].unique()
