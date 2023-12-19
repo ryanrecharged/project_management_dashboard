@@ -115,7 +115,7 @@ def table_display(df: pd.DataFrame, stage_opts: list, crew_opts: list) -> st.dat
 
 def display_options_frame(crew_opts, outage_opts, str_opts, df):    
     # Enable floating menu
-    st.markdown('<span id="floating">', unsafe_allow_html=True)
+    st.markdown('<span id="floating"></span>', unsafe_allow_html=True)
     
     st.caption("Options")
     st.markdown('<span id="button-after"></span>', unsafe_allow_html=True)

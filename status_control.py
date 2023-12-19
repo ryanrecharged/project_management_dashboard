@@ -149,7 +149,7 @@ def produce_file_hub(st_container, df):
         
 def create_options_column(st_container):
     # Enable floating menu
-    st_container.markdown('<span id="floating">', unsafe_allow_html=True)
+    st_container.markdown('<span id="floating"></span>', unsafe_allow_html=True)
     
     st_container.caption("Options")
     
