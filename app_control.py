@@ -38,10 +38,14 @@ def apply_custom_floating_container():
             display: none;
         }
         #floating {
-            height:0%;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
         }
         .element-container:has(#floating) {
-            display: none;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
         }
         .element-container:has(#floating) + div button {
             display: flex;
