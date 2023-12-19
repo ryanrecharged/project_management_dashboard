@@ -7,6 +7,7 @@ import streamlit as st
 import pandas as pd
 
 import reports
+import user
 
 
 print('PAGE RELOAD')
@@ -70,7 +71,7 @@ def menu():
 def structure_page():
     st.subheader("Structure Report")
     st.markdown("***")
-    st.caption('Boonville, NY: National Grid SmartPath Connect PNO 22.2654')
+    st.caption(st.session_state.project_name)
     line_col, sta_col, spcr_col, opts_col = st.columns([3, 4, 3, 2])
     
     select_tab, update_tab, assign_tab = line_col.tabs(["Select", "Update", "Assign"])
@@ -106,7 +107,7 @@ def report_page():
     # Establish page structure
     st.subheader("Project Manager")
     st.markdown("***")
-    st.caption('Boonville, NY: National Grid SmartPath Connect PNO 22.2654')
+    st.caption(st.session_state.project_name)
     report_col, options_col = st.columns([5,1])
     table, tmline, admin_tab  = report_col.tabs(["Table", "Timeline", "Admin"])
     
@@ -154,14 +155,28 @@ def report_page():
     
     with admin_tab:
         tstmp = pd.Timestamp.now().strftime("%Y-%m-%d.%H%M")
-
-        st.download_button(
-            "Download CSV", UTILS.convert_df(struct_df.copy()),
-            f"ctm_internal_boonville_{tstmp}.csv", "text/csv"
-            )
-        st.button("Print transaction log", key="button_print_log", disabled=True)
-        st.button("Add user", key="button_add_user", disabled=True)
-        with st.expander("File repository"):
+        with st.expander("User settings: :red[Change project name and add users]"):
+            st.text_input(
+                label='Name of Project', key="admin_project_name",
+                placeholder="Boonville, NY: National Grid SmartPath Connect PNO 22.XXXX",
+                on_change=user.set_project_name
+                )
+            with st.form("set_user"):
+                st.text_input("username", placeholder="last_name")
+                st.text_input("password", placeholder="uN1Qu3_PVSSW0rk")
+                
+                st.form_submit_button("Submit")
+            
+        
+        with st.expander("Records and logs: :red[Obtain digital access to the database]"):
+            st.download_button(
+                "Download database", UTILS.convert_df(struct_df.copy()),
+                f"ctm_internal_boonville_{tstmp}.csv", "text/csv"
+                )
+            st.button("Print log file", key="button_print_log", disabled=True)
+            
+            
+        with st.expander("File repository: :red[Upload files for synchronous field work]"):
             
             with st.form('file_uploader', clear_on_submit=True, border=False):
                 col1, col2 = st.columns(2)

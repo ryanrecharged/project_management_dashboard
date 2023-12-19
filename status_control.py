@@ -153,7 +153,7 @@ def create_options_column(st_container):
     
     st_container.caption("Options")
     
-    st_container.markdown('<span id="button-after"></span>', unsafe_allow_html=True)
+    # st_container.markdown('<span id="button-after"></span>', unsafe_allow_html=True)
     st_container.button(
         "Project Manager", key="button_project_mgr",
         on_click=UTILS.update_session_state, args=("page", "report")

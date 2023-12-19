@@ -109,6 +109,7 @@ def get_state_vars():
         'pm_filter_toggle': False,
         'pm_sort_by' : 'Stage',
         'pm_sort_toggle' : False,
+        'project_name': 'Boonville, NY: National Grid SmartPath Connect PNO 22.XXXX'
         }
 
     return state_vars
@@ -156,6 +157,6 @@ def project_display_names():
 def set_page_confige():
     st.set_page_config(
         layout='wide', initial_sidebar_state='collapsed', 
-        page_title='C.T. Male', 
+        page_title='Design Professional Corporation', 
         menu_items=None
         )
