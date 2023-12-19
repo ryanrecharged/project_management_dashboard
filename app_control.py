@@ -34,15 +34,22 @@ def apply_custom_css():
 def apply_custom_floating_container():
     html_style = '''
         <style>
-        div:has( >.element-container div.floating) {
+        .element-container:has(style){
+            display: none;
+        }
+        #floating {
+            height:0%;
+        }
+        .element-container:has(#floating) {
+            display: none;
+        }
+        .element-container:has(#floating) + div button {
             display: flex;
             flex-direction: column;
             position: fixed;
         }
-
-        div.floating {
-            height:0%;
-        }
+        
+        
         </style>
     '''
     

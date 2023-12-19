@@ -149,7 +149,7 @@ def produce_file_hub(st_container, df):
         
 def create_options_column(st_container):
     # Enable floating menu
-    st_container.markdown('<div class="floating">', unsafe_allow_html=True)
+    st_container.markdown('<span id="floating">', unsafe_allow_html=True)
     
     st_container.caption("Options")
     
@@ -163,8 +163,6 @@ def create_options_column(st_container):
         "Logout", key="button_logout_structure", on_click=UTILS.logout
         )
     
-    # Close floating container
-    st.markdown('</div>', unsafe_allow_html=True)
 
 def _work_schedule_form():
     with st.form(key='schedule_form'):

@@ -115,7 +115,7 @@ def table_display(df: pd.DataFrame, stage_opts: list, crew_opts: list) -> st.dat
 
 def display_options_frame(crew_opts, outage_opts, str_opts, df):    
     # Enable floating menu
-    st.markdown('<div class="floating">', unsafe_allow_html=True)
+    st.markdown('<span id="floating">', unsafe_allow_html=True)
     
     st.caption("Options")
     st.markdown('<span id="button-after"></span>', unsafe_allow_html=True)
@@ -136,9 +136,7 @@ def display_options_frame(crew_opts, outage_opts, str_opts, df):
         _display_assignment_expansion(crew_opts, str_opts, df)
         
     st.button("Logout", key="button_logout_report", on_click=UTILS.logout)
-        
-    # Close floating container
-    st.markdown('</div>', unsafe_allow_html=True)
+
 
 def _display_sort_options():
     st.radio(
