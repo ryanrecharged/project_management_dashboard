@@ -39,9 +39,9 @@ def gantt_chart(dframe: pd.DataFrame) -> alt.Chart:
     )
 
     chart = base.encode(
-        x=alt.X('yearmonthdate(dates):O', title='', scale=alt.Scale(domain=interval.ref()))
+        x=alt.X('yearmonthdate(dates):O', title='', scale=alt.Scale(domain=interval))
     ).properties(
-        width=900,
+        width='container',
     )
 
     view = base.encode(
@@ -49,7 +49,7 @@ def gantt_chart(dframe: pd.DataFrame) -> alt.Chart:
     ).add_params(
         interval
     ).properties(
-        width=900,
+        width='container',
         height=50,
     )
     
