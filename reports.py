@@ -147,27 +147,13 @@ def admin_settings_display(df):
 
     
     with c1.expander("Project settings: :orange[Change name and color scheme]"):
-        t, a, b = st.tabs(['Name of Project', 'Add User', 'Color Scheme'])
-        t.text_input(
+        s, t = st.tabs(['Name of Project', 'Color Scheme'])
+        s.text_input(
             label='Name of Project', key="admin_project_name",
             placeholder="Boonville, NY: National Grid SmartPath Connect PNO 22.XXXX",
             label_visibility='collapsed',
             on_change=USER.set_project_name
             )
-        
-        if a.toggle('Add new user to project'):
-            with st.form("new_user_entry", border=False):
-                st.text_input(
-                    label="Username", placeholder='Username: last_name', 
-                    label_visibility='collapsed')
-                st.text_input(
-                    label='Password', placeholder='Password: [auto-generated]', 
-                    label_visibility='collapsed', disabled=True)
-                st.text_input(
-                    label='Email address', placeholder='Contact: 631.555.1234 or email',
-                    label_visibility='collapsed')
-                st.checkbox('Administrator', key='new_user_admin')
-                st.form_submit_button("Create user") 
     
     with c2.expander("Records and logs: :orange[Obtain digital access to the database]"):
         a, b = st.tabs(['Database', 'Change log'])
@@ -235,6 +221,33 @@ def admin_settings_display(df):
         
             st.form_submit_button('Upload')
 
+    with c1.expander("App integration: :orange[Connect with third-party apps for ultimate functionality]"):
+        m, n = st.tabs(['Zapier', 'AWS'])
+        m.button("Connect Zapier")
+        n.button("Connect AWS")
+        
+    with c2.expander("Data alignment"):
+        x, y, z, aa = st.tabs(["Sort by", "Filter by", "Field info", "Stages"])
+        x.text_area("Enter list to sort by")
+        y.text_area("Enter list to filter by")
+        z.text_area("Enter list for field info")
+        aa.text_area("Order of project stages")
+    
+    with c3.expander("User management"):
+        t, a, b = st.tabs(['Add user', 'Remove user', 'Update user'])
+        if t.toggle('Add new user to project'):
+            with st.form("new_user_entry", border=False):
+                st.text_input(
+                    label="Username", placeholder='Username: last_name', 
+                    label_visibility='collapsed')
+                st.text_input(
+                    label='Password', placeholder='Password: [auto-generated]', 
+                    label_visibility='collapsed', disabled=True)
+                st.text_input(
+                    label='Email address', placeholder='Contact: 631.555.1234 or email',
+                    label_visibility='collapsed')
+                st.checkbox('Make administrator', key='new_user_admin')
+                st.form_submit_button("Create user") 
 
 def _display_sort_options():
     st.radio(
