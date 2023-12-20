@@ -137,6 +137,12 @@ def report_page():
         er = st.session_state.table_editor['edited_rows']
         ar = st.session_state.table_editor['added_rows']
         dr = st.session_state.table_editor['deleted_rows']
+        
+        print("~~ EDITED ROWS ~~")
+        print(st.session_state.table_editor)
+        print(er)
+        print(ar)
+        print(dr)
         if len(er) + len(ar) + len(dr) == 0:
             pass
         else:

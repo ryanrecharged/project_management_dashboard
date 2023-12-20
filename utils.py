@@ -276,6 +276,10 @@ def save_filtered_df(df, filter_df):
         # Update dframe with modified values
         for each in er[_]:
             df.at[idx, each] = er[_][each]
+            
+    # add rows
+    #for _ in st.session_state.table_editor['added_rows']:
+        
     
     # This sets all rows to be selected, undo-ing filtering
     df['selected_filter'] = True
