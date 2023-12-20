@@ -176,8 +176,8 @@ def report_page():
                     st.text_input(
                         label='Email address', placeholder='Contact: 631.555.1234 or email',
                         label_visibility='collapsed')
-                    st.checkbox('Make user Administrator', key='new_user_admin')
-                    st.form_submit_button("Submit") 
+                    st.checkbox('Give user Administrator access', key='new_user_admin')
+                    st.form_submit_button("Load user") 
         
         with st.expander("Records and logs: :orange[Obtain digital access to the database]"):
             st.download_button(
