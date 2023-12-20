@@ -1,7 +1,9 @@
 import app_control as CONTROL
 import utils as UTILS
+import user as USER
 
 import altair as alt
+import boto3
 import pandas as pd
 import pygwalker as pyg
 import streamlit as st
@@ -136,6 +138,97 @@ def display_options_frame(crew_opts, outage_opts, str_opts, df):
         _display_assignment_expansion(crew_opts, str_opts, df)
         
     st.button("Logout", key="button_logout_report", on_click=UTILS.logout)
+
+def admin_settings_display(df):
+    c1, c2, c3 = st.columns(3)
+    tstmp = pd.Timestamp.now().strftime("%Y-%m-%d.%H%M")
+
+    
+    with c1.expander("User settings: :orange[Change project name and add users]"):
+        st.text_input(
+            label='Name of Project', key="admin_project_name",
+            placeholder="Boonville, NY: National Grid SmartPath Connect PNO 22.XXXX",
+            on_change=USER.set_project_name
+            )
+        
+        if st.toggle('Add new user to project'):
+            with st.form("new_user_entry", border=False):
+                st.text_input(
+                    label="Username", placeholder='Username: last_name', 
+                    label_visibility='collapsed')
+                st.text_input(
+                    label='Password', placeholder='Password: [auto-generated]', 
+                    label_visibility='collapsed', disabled=True)
+                st.text_input(
+                    label='Email address', placeholder='Contact: 631.555.1234 or email',
+                    label_visibility='collapsed')
+                st.checkbox('Administrator', key='new_user_admin')
+                st.form_submit_button("Create user") 
+    
+    with c2.expander("Records and logs: :orange[Obtain digital access to the database]"):
+        st.download_button(
+            "Download database", UTILS.convert_df(df.copy()),
+            f"ctm_internal_boonville_{tstmp}.csv", "text/csv"
+            )
+        st.button("Print log file", key="button_print_log", disabled=True)
+
+    with c3.expander("File repository: :orange[Upload files for synchronous field work]"):
+        
+        with st.form('file_uploader', clear_on_submit=True, border=False):
+            hubs = st.file_uploader('STRUCTURE HUBS', type='csv')
+            dxf = st.file_uploader('DXF FILES', type='dxf')
+            trav = st.file_uploader('CONTROL POINTS', type='csv')
+            if trav is not None:
+                s3 = boto3.client(
+                    service_name="s3",
+                    region_name=st.secrets.AWS_S3_REGION,
+                    aws_access_key_id=st.secrets.AWS_ACCESS_KEY_ID,
+                    aws_secret_access_key=st.secrets.AWS_SECRET_ACCESS_KEY,
+                )
+                
+                ts = pd.Timestamp.now().strftime("%Y%m%d.%H%M")
+                name = f"{st.secrets.AWS_TRAV_KEY}{ts}.csv"
+                s3.upload_fileobj(trav, st.secrets.AWS_BUCKET, name)
+                df['trav_location'] = f'pm_{ts}.csv'
+                UTILS.save_database_changes(df)
+            if dxf is not None:
+                s3 = boto3.client(
+                    service_name="s3",
+                    region_name=st.secrets.AWS_S3_REGION,
+                    aws_access_key_id=st.secrets.AWS_ACCESS_KEY_ID,
+                    aws_secret_access_key=st.secrets.AWS_SECRET_ACCESS_KEY,
+                )
+                
+                ts = pd.Timestamp.now().strftime("%Y%m%d.%H%M")
+                name = f"{st.secrets.AWS_DXF_KEY}{ts}.csv"
+                s3.upload_fileobj(dxf, st.secrets.AWS_BUCKET, name)
+                df['dxf_location'] = f'pm_{ts}.csv'
+                UTILS.save_database_changes(df)
+            if hubs is not None:
+                s3 = boto3.client(
+                    service_name="s3",
+                    region_name=st.secrets.AWS_S3_REGION,
+                    aws_access_key_id=st.secrets.AWS_ACCESS_KEY_ID,
+                    aws_secret_access_key=st.secrets.AWS_SECRET_ACCESS_KEY,
+                )
+                
+                ts = pd.Timestamp.now().strftime("%Y%m%d.%H%M")
+                name = f"{st.secrets.AWS_STR_KEY}{ts}.csv"
+                s3.upload_fileobj(hubs, st.secrets.AWS_BUCKET, name)
+                df['structure_location'] = f'pm_{ts}.csv'
+                UTILS.save_database_changes(df)
+        
+            st.checkbox(
+                'Assign to all structure reports', 
+                value=True, disabled=True
+                )
+            st.selectbox(
+                "Structures to associate", 
+                options=['All', 'Single', 'Multi'],
+                index=0, label_visibility='collapsed',
+                disabled=True)
+        
+            st.form_submit_button('Upload')
 
 
 def _display_sort_options():

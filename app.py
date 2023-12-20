@@ -156,97 +156,15 @@ def report_page():
     #    stc.html(reports.tableau_style(filter_df), scrolling=True, height=920)
     
     with admin_tab:
-        tstmp = pd.Timestamp.now().strftime("%Y-%m-%d.%H%M")
-        with st.expander("User settings: :orange[Change project name and add users]"):
-            ex_col1, ex_col2 = st.columns(2)
-            ex_col1.text_input(
-                label='Name of Project', key="admin_project_name",
-                placeholder="Boonville, NY: National Grid SmartPath Connect PNO 22.XXXX",
-                on_change=user.set_project_name
-                )
-            
-            if ex_col2.toggle('Add new user to project'):
-                with ex_col2.form("new_user_entry", border=False):
-                    st.text_input(
-                        label="Username", placeholder='Username: last_name', 
-                        label_visibility='collapsed')
-                    st.text_input(
-                        label='Password', placeholder='Password: [auto-generated]', 
-                        label_visibility='collapsed', disabled=True)
-                    st.text_input(
-                        label='Email address', placeholder='Contact: 631.555.1234 or email',
-                        label_visibility='collapsed')
-                    st.checkbox('Administrator', key='new_user_admin')
-                    st.form_submit_button("Create user") 
+        st.multiselect(
+            'Options to display', 
+            options = ['Preferences', 'User access', 'File gateway',
+                       'Project settings', 'Records'], # # Create task lists, # Sorting, filtering columns # Customize stages
+            placeholder='Settings menu',
+            key = 'admin_settings_multiselect')
         
-        with st.expander("Records and logs: :orange[Obtain digital access to the database]"):
-            st.download_button(
-                "Download database", UTILS.convert_df(struct_df.copy()),
-                f"ctm_internal_boonville_{tstmp}.csv", "text/csv"
-                )
-            st.button("Print log file", key="button_print_log", disabled=True)
-            
-            
-        with st.expander("File repository: :orange[Upload files for synchronous field work]"):
-            
-            with st.form('file_uploader', clear_on_submit=True, border=False):
-                col1, col2 = st.columns(2)
-                with col1:
-                    hubs = st.file_uploader('STRUCTURE HUBS', type='csv')
-                    dxf = st.file_uploader('DXF FILES', type='dxf')
-                    trav = st.file_uploader('CONTROL POINTS', type='csv')
-                    if trav is not None:
-                        s3 = boto3.client(
-                            service_name="s3",
-                            region_name=st.secrets.AWS_S3_REGION,
-                            aws_access_key_id=st.secrets.AWS_ACCESS_KEY_ID,
-                            aws_secret_access_key=st.secrets.AWS_SECRET_ACCESS_KEY,
-                        )
-                        
-                        ts = pd.Timestamp.now().strftime("%Y%m%d.%H%M")
-                        name = f"{st.secrets.AWS_TRAV_KEY}{ts}.csv"
-                        s3.upload_fileobj(trav, st.secrets.AWS_BUCKET, name)
-                        struct_df['trav_location'] = f'pm_{ts}.csv'
-                        UTILS.save_database_changes(struct_df)
-                    if dxf is not None:
-                        s3 = boto3.client(
-                            service_name="s3",
-                            region_name=st.secrets.AWS_S3_REGION,
-                            aws_access_key_id=st.secrets.AWS_ACCESS_KEY_ID,
-                            aws_secret_access_key=st.secrets.AWS_SECRET_ACCESS_KEY,
-                        )
-                        
-                        ts = pd.Timestamp.now().strftime("%Y%m%d.%H%M")
-                        name = f"{st.secrets.AWS_DXF_KEY}{ts}.csv"
-                        s3.upload_fileobj(dxf, st.secrets.AWS_BUCKET, name)
-                        struct_df['dxf_location'] = f'pm_{ts}.csv'
-                        UTILS.save_database_changes(struct_df)
-                    if hubs is not None:
-                        s3 = boto3.client(
-                            service_name="s3",
-                            region_name=st.secrets.AWS_S3_REGION,
-                            aws_access_key_id=st.secrets.AWS_ACCESS_KEY_ID,
-                            aws_secret_access_key=st.secrets.AWS_SECRET_ACCESS_KEY,
-                        )
-                        
-                        ts = pd.Timestamp.now().strftime("%Y%m%d.%H%M")
-                        name = f"{st.secrets.AWS_STR_KEY}{ts}.csv"
-                        s3.upload_fileobj(hubs, st.secrets.AWS_BUCKET, name)
-                        struct_df['structure_location'] = f'pm_{ts}.csv'
-                        UTILS.save_database_changes(struct_df)
-                
-                with col2:
-                    col2.checkbox(
-                        'Assign to all structure reports', 
-                        value=True, disabled=True
-                        )
-                    col2.selectbox(
-                        "Structures to associate", 
-                        options=['All', 'Single', 'Multi'],
-                        index=0, label_visibility='collapsed',
-                        disabled=True)
-            
-                st.form_submit_button('Upload')
+        reports.admin_settings_display(struct_df) 
+
 
 
 # Main Logic for Navigation
