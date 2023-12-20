@@ -91,7 +91,7 @@ def table_display(df: pd.DataFrame, stage_opts: list, crew_opts: list) -> st.dat
                 ),
             "phase_completion_pct": st.column_config.SelectboxColumn(
                 "%", options=[0, 25, 50, 75],
-                required=True
+                required=False
                 ),
             "assigned_crew": st.column_config.SelectboxColumn(
                 "Crew", options=crew_opts,

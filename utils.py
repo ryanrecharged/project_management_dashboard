@@ -278,8 +278,18 @@ def save_filtered_df(df, filter_df):
             df.at[idx, each] = er[_][each]
             
     # add rows
-    #for _ in st.session_state.table_editor['added_rows']:
+    for _ in st.session_state.table_editor['added_rows']:
+        # TODO: Check for duplicate structure adds
+        df_ = pd.DataFrame(_, index=[0])
+        df = pd.concat([df, df_], ignore_index=True)
         
+    
+    # delete rows
+    idxs = []
+    for _ in st.session_state.table_editor['deleted_rows']:
+        name = filter_df.iloc[_].structure_name
+        idxs.append(df.loc[df['structure_name'] == name].index[0])
+    df.drop(idxs, inplace=True)
     
     # This sets all rows to be selected, undo-ing filtering
     df['selected_filter'] = True

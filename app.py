@@ -137,6 +137,9 @@ def report_page():
         er = st.session_state.table_editor['edited_rows']
         ar = st.session_state.table_editor['added_rows']
         dr = st.session_state.table_editor['deleted_rows']
+        print(filter_df.iloc[31].structure_name)
+        print(filter_df.iloc[32].structure_name)
+        print(filter_df.iloc[33].structure_name)
         
         print("~~ EDITED ROWS ~~")
         print(st.session_state.table_editor)
