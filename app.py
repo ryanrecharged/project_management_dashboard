@@ -165,13 +165,13 @@ def report_page():
                 on_change=user.set_project_name
                 )
             with ex_col2.form("new_user_entry", border=False):
-                st.caption('Add new user to project')
-                st.text_input(label="Username", placeholder='last_name', label_visibility='collapsed')
-                st.text_input(label='Password')
-                st.text_input(label='Assign Subscontractor')
-                st.text_input(label='Assign permissions')
-                st.text_input(label='Email address')
-                st.form_submit_button("Submit") 
+                if st.toggle('Add new user to project'):
+                    st.text_input(label="Username", placeholder='last_name', label_visibility='collapsed')
+                    st.text_input(label='Password')
+                    st.text_input(label='Assign Subscontractor')
+                    st.text_input(label='Assign permissions')
+                    st.text_input(label='Email address')
+                    st.form_submit_button("Submit") 
         
         with st.expander("Records and logs: :orange[Obtain digital access to the database]"):
             st.download_button(
