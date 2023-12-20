@@ -41,6 +41,7 @@ def gantt_chart(dframe: pd.DataFrame) -> alt.Chart:
     chart = base.encode(
         x=alt.X('yearmonthdate(dates):O', title='', scale=alt.Scale(domain=interval))
     ).properties(
+        width=900
     )
 
     view = base.encode(
@@ -48,6 +49,7 @@ def gantt_chart(dframe: pd.DataFrame) -> alt.Chart:
     ).add_params(
         interval
     ).properties(
+        width=900,
         height=50,
     )
     
@@ -59,9 +61,7 @@ def gantt_chart(dframe: pd.DataFrame) -> alt.Chart:
         color=alt.Color('color:N', scale=None)
     )
 
-    return (view & chart).configure_view(
-        continuousWidth=1200,
-    )
+    return view & chart
     
 def tableau_style(dframe: pd.DataFrame) -> str:
 
