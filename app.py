@@ -167,11 +167,21 @@ def report_page():
             
             if ex_col2.toggle('Add new user to project'):
                 with ex_col2.form("new_user_entry", border=False):
-                    st.text_input(label="Username", placeholder='last_name', label_visibility='collapsed')
-                    st.text_input(label='Password')
-                    st.text_input(label='Assign Subscontractor')
-                    st.text_input(label='Assign permissions')
-                    st.text_input(label='Email address')
+                    st.text_input(
+                        label="Username", placeholder='last_name', 
+                        label_visibility='collapsed')
+                    st.text_input(
+                        label='Password', placeholder='[auto-generated]', 
+                        label_visibility='collapsed', disabled=True)
+                    st.text_input(
+                        label='Assign Subscontractor', placeholder='Assign subcontractor',
+                        label_visibility='collapsed')
+                    st.text_input(
+                        label='Assign permissions', placeholder='Assign permissions', 
+                        label_visibility='collapsed')
+                    st.text_input(
+                        label='Email address', placeholder='example@contractor.com',
+                        label_visibility='collapsed')
                     st.form_submit_button("Submit") 
         
         with st.expander("Records and logs: :orange[Obtain digital access to the database]"):
