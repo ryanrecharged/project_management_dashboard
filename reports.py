@@ -147,13 +147,14 @@ def admin_settings_display(df):
 
     
     with c1.expander("User settings: :orange[Change project name and add users]"):
-        st.text_input(
+        t, a, b = st.tabs(['Name of Project', 'Add User', 'Color Scheme'])
+        t.text_input(
             label='Name of Project', key="admin_project_name",
             placeholder="Boonville, NY: National Grid SmartPath Connect PNO 22.XXXX",
             on_change=USER.set_project_name
             )
         
-        if st.toggle('Add new user to project'):
+        if a.toggle('Add new user to project'):
             with st.form("new_user_entry", border=False):
                 st.text_input(
                     label="Username", placeholder='Username: last_name', 
