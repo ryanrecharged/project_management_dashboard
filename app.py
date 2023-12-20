@@ -164,8 +164,9 @@ def report_page():
                 placeholder="Boonville, NY: National Grid SmartPath Connect PNO 22.XXXX",
                 on_change=user.set_project_name
                 )
-            with ex_col2.form("new_user_entry", border=False):
-                if st.toggle('Add new user to project'):
+            
+            if ex_col2.toggle('Add new user to project'):
+                with ex_col2.form("new_user_entry", border=False):
                     st.text_input(label="Username", placeholder='last_name', label_visibility='collapsed')
                     st.text_input(label='Password')
                     st.text_input(label='Assign Subscontractor')
