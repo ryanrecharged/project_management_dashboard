@@ -137,15 +137,7 @@ def report_page():
         er = st.session_state.table_editor['edited_rows']
         ar = st.session_state.table_editor['added_rows']
         dr = st.session_state.table_editor['deleted_rows']
-        print(filter_df.iloc[31].structure_name)
-        print(filter_df.iloc[32].structure_name)
-        print(filter_df.iloc[33].structure_name)
         
-        print("~~ EDITED ROWS ~~")
-        print(st.session_state.table_editor)
-        print(er)
-        print(ar)
-        print(dr)
         if len(er) + len(ar) + len(dr) == 0:
             pass
         else:
@@ -165,20 +157,23 @@ def report_page():
     
     with admin_tab:
         tstmp = pd.Timestamp.now().strftime("%Y-%m-%d.%H%M")
-        with st.expander("User settings: :red[Change project name and add users]"):
-            st.text_input(
+        with st.expander("User settings: :orange[Change project name and add users]"):
+            ex_col1, ex_col2 = st.columns(2)
+            ex_col1.text_input(
                 label='Name of Project', key="admin_project_name",
                 placeholder="Boonville, NY: National Grid SmartPath Connect PNO 22.XXXX",
                 on_change=user.set_project_name
                 )
-            with st.form("set_user"):
-                st.text_input("username", placeholder="last_name")
-                st.text_input("password", placeholder="uN1Qu3_PVSSW0rk")
-                
-                st.form_submit_button("Submit")
-            
+            with ex_col2.form("new_user_entry", border=False):
+                st.caption('Add new user to project')
+                st.text_input(label="Username", placeholder='last_name', label_visibility='collapsed')
+                st.text_input(label='Password')
+                st.text_input(label='Assign Subscontractor')
+                st.text_input(label='Assign permissions')
+                st.text_input(label='Email address')
+                st.form_submit_button("Submit") 
         
-        with st.expander("Records and logs: :red[Obtain digital access to the database]"):
+        with st.expander("Records and logs: :orange[Obtain digital access to the database]"):
             st.download_button(
                 "Download database", UTILS.convert_df(struct_df.copy()),
                 f"ctm_internal_boonville_{tstmp}.csv", "text/csv"
@@ -186,7 +181,7 @@ def report_page():
             st.button("Print log file", key="button_print_log", disabled=True)
             
             
-        with st.expander("File repository: :red[Upload files for synchronous field work]"):
+        with st.expander("File repository: :orange[Upload files for synchronous field work]"):
             
             with st.form('file_uploader', clear_on_submit=True, border=False):
                 col1, col2 = st.columns(2)
