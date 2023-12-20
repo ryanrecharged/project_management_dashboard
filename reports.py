@@ -146,11 +146,12 @@ def admin_settings_display(df):
         print(each)
 
     
-    with c1.expander("User settings: :orange[Change project name and add users]"):
+    with c1.expander("Project settings: :orange[Change name and color scheme]"):
         t, a, b = st.tabs(['Name of Project', 'Add User', 'Color Scheme'])
         t.text_input(
             label='Name of Project', key="admin_project_name",
             placeholder="Boonville, NY: National Grid SmartPath Connect PNO 22.XXXX",
+            label_visibility='collapsed',
             on_change=USER.set_project_name
             )
         
@@ -169,11 +170,12 @@ def admin_settings_display(df):
                 st.form_submit_button("Create user") 
     
     with c2.expander("Records and logs: :orange[Obtain digital access to the database]"):
-        st.download_button(
+        a, b = st.tabs(['Database', 'Change log'])
+        a.download_button(
             "Download database", UTILS.convert_df(df.copy()),
             f"ctm_internal_boonville_{tstmp}.csv", "text/csv"
             )
-        st.button("Print log file", key="button_print_log", disabled=True)
+        b.button("Print log file", key="button_print_log", disabled=True)
 
     with c3.expander("File repository: :orange[Upload files for synchronous field work]"):
         
