@@ -40,13 +40,16 @@ def gantt_chart(dframe: pd.DataFrame) -> alt.Chart:
 
     chart = base.encode(
         x=alt.X('yearmonthdate(dates):O', title='', scale=alt.Scale(domain=interval.ref()))
-    ).properties()
+    ).properties(
+        width=900,
+    )
 
     view = base.encode(
         y=alt.Y('structure_name:O', title='', axis=alt.Axis(labels=False))
-    ).add_selection(
+    ).add_params(
         interval
     ).properties(
+        width=900,
         height=50,
     )
     
