@@ -157,10 +157,10 @@ def report_page():
     
     with admin_tab:
         st.multiselect(
-            'Options to display', 
+            'Administrative settings categories', 
             options = ['Preferences', 'User access', 'File gateway',
                        'Project settings', 'Records'], # # Create task lists, # Sorting, filtering columns # Customize stages
-            placeholder='Settings menu',
+            placeholder='[select to display]',
             key = 'admin_settings_multiselect')
         
         reports.admin_settings_display(struct_df) 

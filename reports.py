@@ -142,6 +142,8 @@ def display_options_frame(crew_opts, outage_opts, str_opts, df):
 def admin_settings_display(df):
     c1, c2, c3 = st.columns(3)
     tstmp = pd.Timestamp.now().strftime("%Y-%m-%d.%H%M")
+    for each in st.session_state.admin_settings_multiselect:
+        print(each)
 
     
     with c1.expander("User settings: :orange[Change project name and add users]"):
