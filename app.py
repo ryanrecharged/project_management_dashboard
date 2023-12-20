@@ -174,7 +174,7 @@ def report_page():
                         label='Password', placeholder='Password: [auto-generated]', 
                         label_visibility='collapsed', disabled=True)
                     st.text_input(
-                        label='Email address', placeholder='Contact: 631.555.1234',
+                        label='Email address', placeholder='Contact: 631.555.1234 or user@domain.com',
                         label_visibility='collapsed')
                     st.checkbox('Make user Administrator', key='new_user_admin')
                     st.form_submit_button("Submit") 
