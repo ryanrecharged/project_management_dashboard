@@ -60,8 +60,7 @@ def gantt_chart(dframe: pd.DataFrame) -> alt.Chart:
     )
 
     return (view & chart).configure_view(
-        continuousHeight=200,
-        continuousWidth=200,
+        continuousWidth=1200,
     )
     
 def tableau_style(dframe: pd.DataFrame) -> str:
