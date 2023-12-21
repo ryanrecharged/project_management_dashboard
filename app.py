@@ -74,7 +74,9 @@ def structure_page():
     st.caption(st.session_state.project_name)
     line_col, sta_col, spcr_col, opts_col = st.columns([3, 4, 3, 2])
     
-    select_tab, update_tab, assign_tab = line_col.tabs(["Select", "Update", "Assign"])
+    select_tab, update_tab, assign_tab, attach_tab = line_col.tabs(
+        ["Select", "Update", "Assign", "Attach"]
+        )
     
     STATUS.produce_structure_filter(struct_df, select_tab)
     STATUS.produce_structure_selection(struct_df, select_tab)
@@ -97,6 +99,11 @@ def structure_page():
         f"Assign: **{line}-{station}**", key="toggle_assign_status"
         ):
         STATUS.produce_assignment_form(s_s, assign_tab, struct_df)
+        
+        
+    # Chat box
+    STATUS.produce_attach_document(attach_tab)
+    
     
     # Global options section
     STATUS.create_options_column(opts_col)
@@ -157,7 +164,7 @@ def report_page():
     
     with admin_tab:
         st.multiselect(
-            'Administrative settings categories', 
+            'Administrative categories', 
             options = ['Preferences', 'User access', 'File gateway',
                        'Project settings', 'Records'], # # Create task lists, # Sorting, filtering columns # Customize stages
             placeholder='[select to display]',

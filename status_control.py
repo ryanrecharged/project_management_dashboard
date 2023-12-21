@@ -5,6 +5,9 @@ import pandas as pd
 import streamlit as st
 
 
+def produce_attach_document(container):
+    container.file_uploader("Upload random file")
+
 def produce_status_info_column(col, station_frame):
     col.caption(
         "Info", 
