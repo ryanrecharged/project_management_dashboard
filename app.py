@@ -103,9 +103,9 @@ def structure_page():
         
     # Chat box
     spcr_col.caption("Message box")
-    spcr_col.selectbox('To:')
-    spcr_col.selectbox('Medium:')
-    spcr_col.text_area('Contents of Message')
+    spcr_col.selectbox('To:', options=['Lampkin', 'Skelly'])
+    spcr_col.selectbox('Medium:', options=['Text'])
+    spcr_col.text_area('Contents of Message', height=400)
     spcr_col.code('Enter history of messages here')
     
     # Attach document tab
