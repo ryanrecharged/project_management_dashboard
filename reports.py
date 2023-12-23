@@ -209,7 +209,7 @@ def admin_settings_display(df):
                 st.checkbox("Make sequential")
                 st.form_submit_button('Submit')
 
-    with c2.expander("Data uploads"):
+    with c2.expander("Uploads: :orange[Manage project files]"):
         d1, d2 = st.tabs(['File uploader', 'Second tab'])
         with d1.form('file_uploader', clear_on_submit=True, border=False):
             hubs = st.file_uploader('STRUCTURE HUBS', type='csv')
@@ -273,16 +273,21 @@ def admin_settings_display(df):
         m.button("Connect Zapier")
         n.text_area("[List Zaps here via API query]",
             placeholder="List of zaps with associated communications Label (e.g. Teams). IMPORTANT! In this case, the user could also be a bot, which then connects to a Zap. Cool!")
-        
-    with c3.expander("Data selection"):
-        x, y = st.tabs(["Sort by", "Filter by"])
-        x.text_area("Enter list to sort by")
-        y.text_area("Enter list to filter by")
-        
-    with c3.expander("Data views"):
+
+    with c3.expander("Project views"):
         z, aa = st.tabs(["Field view", "Table view"])
         z.text_area("Enter list for field info")
         aa.text_area("Columns for Admin Table view")
+       
+    with c3.expander("Filtering"):
+        x, y = st.tabs(["Sort by", "Filter by"])
+        x.text_area(
+            "Enter list to sort by",
+            label_visibility='collapsed',
+            placeholder='Sort only by primarykey-secondkey and stage. Do not allow user selection')
+        y.multiselect(
+            "Enter list to filter by", label_visibility='collapsed',
+            options=['column1', 'column2', 'column3'])
     
     with c2.expander("User management: :orange[Add, remove, and update]"):
         t, a, b = st.tabs(['Add user', 'Remove user', 'Update user'])
