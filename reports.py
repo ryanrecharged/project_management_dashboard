@@ -196,9 +196,11 @@ def admin_settings_display(df):
             label_visibility='collapsed')
         
         w2.radio(
-            'Format', 
+            'Format', key='admin_update_style',
             options=['Notes + Slider', 'Checklist'],
             )
+        if st.session_state.admin_update_style.lower() == "checklist":
+            w2.text_input('label')
 
     with c2.expander("Data uploads"):
         d1, d2 = st.tabs(['File uploader', 'Second tab'])
