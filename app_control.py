@@ -68,8 +68,6 @@ def apply_custom_button_styling():
             display: none;
         }
         .element-container:has(#button-after) + div button {
-            background-color: #593773cc;
-            border: 2px solid #b16ee6; 
             margin: 2px; 
             min-width: 155px; 
             min-height: 60px;

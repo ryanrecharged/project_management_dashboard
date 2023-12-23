@@ -161,8 +161,8 @@ def admin_settings_display(df):
             on_change=USER.set_report_title
         )
         
-        t.color_picker('Accent Color', value="", key='admin_accent_color')
-        t.color_picker('Background Color', value="", key='admin_bkgd_color')
+        t.color_picker('Accent Color', value="#000", key='admin_accent_color')
+        t.color_picker('Background Color', value="#000", key='admin_bkgd_color')
         
     
     with c2.expander("Records and logs: :orange[Obtain digital access to the database]"):
