@@ -187,9 +187,9 @@ def admin_settings_display(df):
         w1, w2 = st.tabs(['Stages', 'Milestones'])
     
         w1.selectbox(
-            'Select project type', 
-            options=['Project Type 1', 'Project Type 2'],
-            label_visibility='collapsed')
+            'Project type', 
+            options=['Type 1', 'Type 2'], index=None,
+            label_visibility='visible')
         w1.text_area(
             'Set project stages', 
             placeholder="Set project stages; emojis allowed; using notion for duration increments + subcontractor + team",
