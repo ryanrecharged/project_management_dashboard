@@ -36,7 +36,7 @@ def no_internet():
 # Login
 def login():
     login_col1, login_col2, login_col3 = st.columns([3,2,3])
-    login_col2.subheader("Field to Office Gantt")
+    login_col2.subheader("Field to Office Project Manager")
     
     # Login Form
     login_col2.text_input("Username", 
