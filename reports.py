@@ -284,9 +284,10 @@ def admin_settings_display(df):
         t, a, b = st.tabs(['Add user', 'Remove user', 'Update user'])
         with t.form("new_user_entry", border=False):
             st.text_input(
-                label="Add new user to project", 
+                label="Add new user to project",
                 placeholder='[create user] e.g. last_name', 
-                label_visibility='collapse')
+                label_visibility='collapsed'
+                )
             st.text_input(
                 label='Password', placeholder='[auto-generated password]', 
                 label_visibility='collapsed', disabled=True)
