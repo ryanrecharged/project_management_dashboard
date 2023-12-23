@@ -268,15 +268,19 @@ def admin_settings_display(df):
             st.form_submit_button('Upload')
 
 
-    with c1.expander("App integration: :orange[Connect to third-party apps]"):
+    with c1.expander("App integrations: :orange[Connect to third-party apps]"):
         m, n = st.tabs(['Zapier', 'List of Zaps'])
         m.button("Connect Zapier")
-        n.text_area("[List Zaps here via API query]")
+        n.text_area("[List Zaps here via API query]",
+            placeholder="List of zaps with associated communications Label (e.g. Teams). IMPORTANT! In this case, the user could also be a bot, which then connects to a Zap. Cool!")
         
-    with c3.expander("Data alignment"):
-        x, y, z, aa = st.tabs(["Sort by", "Filter by", "Field view", "Table view"])
+    with c3.expander("Data selection"):
+        x, y, z, aa = st.tabs(["Sort by", "Filter by"])
         x.text_area("Enter list to sort by")
         y.text_area("Enter list to filter by")
+        
+    with c3.expander("Data views"):
+        z, aa = st.tabs(["Field view", "Table view"])
         z.text_area("Enter list for field info")
         aa.text_area("Columns for Admin Table view")
     
@@ -316,12 +320,12 @@ def admin_settings_display(df):
                 label="Update user contact", 
                 options=['user1', 'user2'],
                 index=None,
-                placeholder='Username: last_name', 
+                placeholder='[... select user ...]', 
                 label_visibility='collapsed')
             st.text_input(
                 label='Contact value',
                 placeholder='contact info', 
-                label_visibility='collapsed', disabled=True)
+                label_visibility='collapsed')
             st.selectbox(
                 label='Contact medium', 
                 options = ['Email', 'SMS', 'Discord', 'Notion', 'Slack', 'Teams'],
