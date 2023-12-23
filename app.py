@@ -156,11 +156,12 @@ def report_page():
         dr = st.session_state.table_editor['deleted_rows']
         
         if len(er) + len(ar) + len(dr) == 0:
-            pass
+            sv_disabled = True
         else:
             st.markdown('<span id="button-pending"></span>', unsafe_allow_html=True)
+            sv_disabled = False
             
-        st.button("Save Changes", 
+        st.button("Save Changes", disabled=sv_disabled,
             on_click=UTILS.save_filtered_df, args=(struct_df, filter_df,)
             )
         

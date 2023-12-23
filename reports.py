@@ -147,7 +147,7 @@ def admin_settings_display(df):
         print(each)
 
     
-    with c1.expander("Project settings: :orange[Change project name and title]"):
+    with c1.expander("Project name and title: :orange[Change headers]"):
         s, t= st.tabs(['Name of Project', 'Report Title'])
         s.text_input(
             label='Name of Project', key="admin_project_name",
@@ -163,7 +163,7 @@ def admin_settings_display(df):
         )
     
     with c1.expander("Color schemes: :orange[General visual styling]"):
-        x, y, z = st.tabs(['Primary', 'Accent', 'Stages'])
+        x, y = st.tabs(['Primary', 'Accent'])
         
         x.color_picker(
             'Primary Color', value="#593773", key='admin_accent_color', 
@@ -175,7 +175,7 @@ def admin_settings_display(df):
             )
         
     
-    with c2.expander("Records and logs: :orange[Obtain digital access to the database]"):
+    with c2.expander("Records and logs: :orange[Access the database]"):
         a, b = st.tabs(['Database', 'Change log'])
         a.download_button(
             "Download database", UTILS.convert_df(df.copy()),
