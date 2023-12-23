@@ -308,7 +308,7 @@ def admin_settings_display(df):
             )
             st.form_submit_button("Remove user") 
             
-        with t.form("new_user_entry", border=False):
+        with b.form("update_user_entry", border=False):
             st.text_input(
                 label="Add new user to project", placeholder='Username: last_name', 
                 label_visibility='visible')
