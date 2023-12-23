@@ -60,10 +60,8 @@ def login():
     login_col2.divider()
     
     
-    e, f = login_col2.tabs(['Register', 'About this app'])
+    e, f, g = login_col2.tabs(['Terms', 'About this app', 'Register'])
     
-    e.write('Register')
-    f.write('Learn more')
     
         
 # Menu
