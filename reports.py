@@ -275,7 +275,7 @@ def admin_settings_display(df):
             placeholder="List of zaps with associated communications Label (e.g. Teams). IMPORTANT! In this case, the user could also be a bot, which then connects to a Zap. Cool!")
         
     with c3.expander("Data selection"):
-        x, y, z, aa = st.tabs(["Sort by", "Filter by"])
+        x, y = st.tabs(["Sort by", "Filter by"])
         x.text_area("Enter list to sort by")
         y.text_area("Enter list to filter by")
         
