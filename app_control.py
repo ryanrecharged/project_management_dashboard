@@ -18,8 +18,8 @@ def apply_custom_css():
         .stTextInput {box-shadow: 2px 3px 1px rgba(0,0,0,0.2);}
         .block-container {padding-bottom: 0rem;}
         button.st-emotion-cache-7ym5gk:active {background-color: #593773cc; border-color: #ffffff}
-        button.st-emotion-cache-7ym5gk:hover {background-color: #b16ee6cc; color: #ffffff}
-        button.st-emotion-cache-7ym5gk:focus:not(:active) {color: #593773;}
+        button.st-emotion-cache-7ym5gk:hover {background-color: #b16ee666; color: #ffffff}
+        button.st-emotion-cache-7ym5gk:focus:not(:active) {color: #593773cc;}
         .css-18e3th9 {padding-top: 0rem; padding-bottom: 0rem;}
         .css-ocqkz7 {gap: 0rem 1rem;}
         .e1fqkh3o1 {box-shadow: 0 3px 3px rgba(0,0,0,0.2);}
@@ -95,6 +95,7 @@ def apply_custom_button_styling():
         }
         .element-container:has(#button-logout) + div button {
             border: 1px dashed #939393; 
+            min-width: 85px; 
             margin: 2px; 
         }
         </style>
