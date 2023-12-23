@@ -55,10 +55,7 @@ def login():
     
     # Login Error
     if st.session_state.login_error:
-        login_col2.warning(st.session_state.login_error_message)
-        
-    login_col2.divider()
-    
+        login_col2.warning(st.session_state.login_error_message)    
     
     d, e, f, g = login_col2.tabs([" ", 'Terms', 'About this app', 'Register'])
     
