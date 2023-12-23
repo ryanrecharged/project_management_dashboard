@@ -187,7 +187,7 @@ def admin_settings_display(df):
         w1, w2 = st.tabs(['Stages', 'Milestones'])
     
         w1.selectbox(
-            'Project type', 
+            'Project type', key='admin_project_type',
             options=['Type 1', 'Type 2'], index=None,
             label_visibility='visible')
         w1.text_area(
@@ -196,11 +196,12 @@ def admin_settings_display(df):
             label_visibility='collapsed')
         
         w2.radio(
-            'Format', key='admin_update_style',
+            label=f'{st.session_state.admin_project_type} update format', 
+            key='admin_update_style',
             options=['Notes + Slider', 'Checklist'],
             )
         if st.session_state.admin_update_style.lower() == "checklist":
-            with w2.form('Checklist setup'):
+            with w2.form('Checklist setup', border=False):
                 st.text_area(
                     "Checklist text area",
                     placeholder="Checklist text area",
@@ -279,17 +280,18 @@ def admin_settings_display(df):
         z.text_area("Enter list for field info")
         aa.text_area("Columns for Admin Table view")
     
-    with c2.expander("User management"):
+    with c2.expander("User management: :orange[Add, remove, and update]"):
         t, a, b = st.tabs(['Add user', 'Remove user', 'Update user'])
         with t.form("new_user_entry", border=False):
             st.text_input(
-                label="Add new user to project", placeholder='Username: last_name', 
-                label_visibility='visible')
+                label="Add new user to project", 
+                placeholder='[create user] e.g. last_name', 
+                label_visibility='collapse')
             st.text_input(
-                label='Password', placeholder='Password: [auto-generated]', 
+                label='Password', placeholder='[auto-generated password]', 
                 label_visibility='collapsed', disabled=True)
             st.text_input(
-                label='Email address', placeholder='Contact: 631.555.1234 or email',
+                label='Email address', placeholder='[contact info] 10-digit SMS or email address',
                 label_visibility='collapsed')
             st.checkbox('Make administrator', key='new_user_admin')
             st.form_submit_button("Create user")
@@ -299,25 +301,32 @@ def admin_settings_display(df):
                 label="Remove user from project", 
                 options=['user1', 'user2'],
                 index=None,
-                placeholder='Username: last_name', 
-                label_visibility='visible')
+                placeholder='[... select user ...]', 
+                label_visibility='collapsed')
             st.text_input(
                 label='Confirm user removal', 
-                placeholder='[type username to confirm removal]',
+                placeholder='Type username here to confirm removal',
                 label_visibility='collapsed'                
             )
             st.form_submit_button("Remove user") 
             
         with b.form("update_user_entry", border=False):
-            st.text_input(
-                label="Add new user to project", placeholder='Username: last_name', 
-                label_visibility='visible')
-            st.text_input(
-                label='Password', placeholder='Password: [auto-generated]', 
-                label_visibility='collapsed', disabled=True)
-            st.text_input(
-                label='Email address', placeholder='Contact: 631.555.1234 or email',
+            st.selectbox(
+                label="Update user contact", 
+                options=['user1', 'user2'],
+                index=None,
+                placeholder='Username: last_name', 
                 label_visibility='collapsed')
+            st.text_input(
+                label='Contact value',
+                placeholder='contact info', 
+                label_visibility='collapsed', disabled=True)
+            st.selectbox(
+                label='Contact medium', 
+                options = ['Email', 'SMS', 'Discord', 'Notion', 'Slack', 'Teams'],
+                index=0,
+                label_visibility='collapsed')
+            st.checkbox('Reset password')
             st.form_submit_button("Update user") 
 
 def _display_sort_options():
