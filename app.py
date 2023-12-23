@@ -104,8 +104,8 @@ def structure_page():
         
         
     # Chat box
-    spcr_col.caption("Communication hub")
-    if spcr_col.toggle("Send msg", disabled=True):
+    spcr_col.caption("Communications hub")
+    if spcr_col.toggle("Send messages", disabled=True):
         spcr_col.selectbox('To:', options=['Lampkin', 'Skelly'])
         spcr_col.selectbox('Medium:', options=['Text'])
         spcr_col.text_area('Contents of Message', height=200)

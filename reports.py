@@ -183,23 +183,23 @@ def admin_settings_display(df):
             )
         b.button("Print log file", key="button_print_log", disabled=True)
 
-    with c3.expander("Workflow: :orange[Upload files for synchronous field work]"):
+    with c3.expander("Workflow: :orange[Establish project structure]"):
         w1, w2 = st.tabs(['Processes', 'Milestones'])
+    
+        w1.selectbox(
+            'Select project type', 
+            options=['Project Type 1', 'Project Type 2'],
+            label_visibility='collapsed')
+        w1.text_area(
+            'Set project stages', 
+            placeholder="Set project stages; emojis allowed; using notion for duration increments + subcontractor + team",
+            label_visibility='collapsed')
         
-        if w1.toggle('Create'):
-            w1.selectbox(
-                'Select project type', 
-                options=['Project Type 1', 'Project Type 2'],
-                label_visibility='collapsed')
-            w1.text_area(
-                'Set project stages', placeholder="Set project stages; emojis allowed; using notion for duration increments + ",
-                label_visibility='collapsed')
-        
-        if w2.toggle('Set milestones'):
-            w2.radio(
-                'Milestone type', options=['Notes+Slider', 'Checklist'], 
-                label_visibility='collapsed'
-                )
+        w2.radio(
+            'Milestone type', 
+            options=['Notes + Slider (simple)', 'Checklist (advanced)'],
+            label_visibility='collapsed'
+            )
 
     with c2.expander("Data uploads"):
         d1, d2 = st.tabs(['File uploader', 'Second tab'])
