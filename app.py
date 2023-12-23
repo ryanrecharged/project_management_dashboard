@@ -59,8 +59,8 @@ def login():
     
     d, e, f = login_col2.tabs([" ", 'About this app', 'Register'])
     
-    e.write('This is a SUPER app that will organize the way you live, work, and create.')
-    f.markdown("<a href='https://field-to-office-gantt.streamlit.app'>Join the club</a>", unsafe_allow_html=True)
+    e.markdown('This is a SUPER app that will organize the way you live, work, and create. <a href="https://field-to-office-gantt.streamlit.app">Learn more</a>.')
+    f.markdown("<a href='https://field-to-office-gantt.streamlit.app'>Join</a> the club", unsafe_allow_html=True)
     
     
         
