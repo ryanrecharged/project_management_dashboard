@@ -62,14 +62,14 @@ def menu():
     
     menu_col2.subheader("Choose version")
     
-    menu_col2.button("Structure Report", key="button_update", 
+    menu_col2.button(f"{st.session_state.report_title} Report", key="button_update", 
               on_click=UTILS.update_session_state, args=("page", "entry"))
     menu_col2.button("Project Manager", key="button_report",
               on_click=UTILS.update_session_state, args=("page", "report"))
 
 # Structure Page
 def structure_page():
-    st.subheader("Structure Report")
+    st.subheader(f"{st.session_state.report_title} Report")
     st.markdown("***")
     st.caption(st.session_state.project_name)
     line_col, sta_col, spcr_col, opts_col = st.columns([3, 4, 3, 2])

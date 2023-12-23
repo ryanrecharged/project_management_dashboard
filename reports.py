@@ -122,7 +122,7 @@ def display_options_frame(crew_opts, outage_opts, str_opts, df):
     st.caption("Options")
     st.markdown('<span id="button-after"></span>', unsafe_allow_html=True)
     st.button(
-        "Structure Report", key="button_update_structure",
+        f"{st.session_state.report_title} Report", key="button_update_structure",
         on_click=UTILS.update_session_state, args=("page", "entry")
         )    
     st.checkbox(
@@ -154,6 +154,16 @@ def admin_settings_display(df):
             label_visibility='collapsed',
             on_change=USER.set_project_name
             )
+        s.text_input(
+            label='Report Title', key='admin_title_name',
+            placeholder='Structure',
+            label_visibility='collapsed',
+            on_change=USER.set_report_title
+        )
+        
+        t.color_picker('Accent Color', value="", key='admin_accent_color')
+        t.color_picker('Background Color', value="", key='admin_bkgd_color')
+        
     
     with c2.expander("Records and logs: :orange[Obtain digital access to the database]"):
         a, b = st.tabs(['Database', 'Change log'])

@@ -17,6 +17,7 @@ def apply_custom_css():
         .stTextArea {box-shadow: 2px 3px 1px rgba(0,0,0,0.2);}
         .stTextInput {box-shadow: 2px 3px 1px rgba(0,0,0,0.2);}
         .block-container {padding-bottom: 0rem;}
+        .st-emotion-cache-7ym5gk:active {background-color: 593773}
         .css-18e3th9 {padding-top: 0rem; padding-bottom: 0rem;}
         .css-ocqkz7 {gap: 0rem 1rem;}
         .e1fqkh3o1 {box-shadow: 0 3px 3px rgba(0,0,0,0.2);}
