@@ -148,22 +148,22 @@ def admin_settings_display(df):
 
     
     with c1.expander("Project settings: :orange[Change name and color scheme]"):
-        s, t = st.tabs(['Name of Project', 'Color Scheme'])
+        s, t, u = st.tabs(['Name of Project', 'Report Title', 'Color Scheme'])
         s.text_input(
             label='Name of Project', key="admin_project_name",
             placeholder="Boonville, NY: National Grid SmartPath Connect PNO 22.XXXX",
             label_visibility='collapsed',
             on_change=USER.set_project_name
             )
-        s.text_input(
+        t.text_input(
             label='Report Title', key='admin_title_name',
-            placeholder='Structure',
+            placeholder='e.g. "Structure"',
             label_visibility='collapsed',
             on_change=USER.set_report_title
         )
         
-        t.color_picker('Accent Color', value="#000", key='admin_accent_color')
-        t.color_picker('Background Color', value="#000", key='admin_bkgd_color')
+        u.color_picker('Accent Color', value="#593773", key='admin_accent_color')
+        u.color_picker('Background Color', value="#b16ee6", key='admin_bkgd_color')
         
     
     with c2.expander("Records and logs: :orange[Obtain digital access to the database]"):
