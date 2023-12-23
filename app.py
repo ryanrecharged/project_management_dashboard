@@ -57,7 +57,10 @@ def login():
     if st.session_state.login_error:
         login_col2.warning(st.session_state.login_error_message)    
     
-    d, e, f, g = login_col2.tabs([" ", 'Terms', 'About this app', 'Register'])
+    d, e, f = login_col2.tabs([" ", 'About this app', 'Register'])
+    
+    e.write('This is a SUPER app that will organize the way you live, work, and create.')
+    f.markdown("<a href='https://field-to-office-gantt.streamlit.app'>Join the club</a>", unsafe_allow_html=True)
     
     
         
