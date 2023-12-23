@@ -106,11 +106,13 @@ def structure_page():
     # Chat box
     with spcr_col.expander("Communications hub"):
         st.selectbox(
-            'To', options=['Lampkin', 'Skelly'], index=None, 
+            'To', options=['Lampkin', 'Skelly'], 
+            placeholder="recipient", index=None, 
             label_visibility='collapsed'
             )
         st.selectbox(
-            'Medium', options=['SMS'], index=None,
+            'Medium', options=['SMS'], 
+            index=0,
             label_visibility='collapsed'
             )
         
