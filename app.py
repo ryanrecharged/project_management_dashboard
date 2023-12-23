@@ -60,7 +60,7 @@ def login():
     login_col2.divider()
     
     
-    e, f, g = login_col2.tabs(['Terms', 'About this app', 'Register'])
+    d, e, f, g = login_col2.tabs([" ", 'Terms', 'About this app', 'Register'])
     
     
         
