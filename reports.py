@@ -200,7 +200,13 @@ def admin_settings_display(df):
             options=['Notes + Slider', 'Checklist'],
             )
         if st.session_state.admin_update_style.lower() == "checklist":
-            w2.text_input('label')
+            with w2.form('Checklist setup'):
+                st.text_area(
+                    "Checklist text area",
+                    placeholder="Checklist text area",
+                    label_visibility="collapsed")
+                st.checkbox("Make sequential")
+                st.form_submit_button('Submit')
 
     with c2.expander("Data uploads"):
         d1, d2 = st.tabs(['File uploader', 'Second tab'])
@@ -275,19 +281,45 @@ def admin_settings_display(df):
     
     with c2.expander("User management"):
         t, a, b = st.tabs(['Add user', 'Remove user', 'Update user'])
-        if t.toggle('Add new user to project'):
-            with st.form("new_user_entry", border=False):
-                st.text_input(
-                    label="Username", placeholder='Username: last_name', 
-                    label_visibility='collapsed')
-                st.text_input(
-                    label='Password', placeholder='Password: [auto-generated]', 
-                    label_visibility='collapsed', disabled=True)
-                st.text_input(
-                    label='Email address', placeholder='Contact: 631.555.1234 or email',
-                    label_visibility='collapsed')
-                st.checkbox('Make administrator', key='new_user_admin')
-                st.form_submit_button("Create user") 
+        with t.form("new_user_entry", border=False):
+            st.text_input(
+                label="Add new user to project", placeholder='Username: last_name', 
+                label_visibility='visible')
+            st.text_input(
+                label='Password', placeholder='Password: [auto-generated]', 
+                label_visibility='collapsed', disabled=True)
+            st.text_input(
+                label='Email address', placeholder='Contact: 631.555.1234 or email',
+                label_visibility='collapsed')
+            st.checkbox('Make administrator', key='new_user_admin')
+            st.form_submit_button("Create user")
+            
+        with a.form("remove_user_entry", border=False):
+            st.selectbox(
+                label="Remove user from project", 
+                options=['user1', 'user2'],
+                index=None,
+                placeholder='Username: last_name', 
+                label_visibility='visible')
+            st.text_input(
+                label='Confirm user removal', 
+                placeholder='[type username to confirm removal]',
+                label_visibility='collapsed'                
+            )
+            st.form_submit_button("Remove user") 
+            
+        with t.form("new_user_entry", border=False):
+            st.text_input(
+                label="Add new user to project", placeholder='Username: last_name', 
+                label_visibility='visible')
+            st.text_input(
+                label='Password', placeholder='Password: [auto-generated]', 
+                label_visibility='collapsed', disabled=True)
+            st.text_input(
+                label='Email address', placeholder='Contact: 631.555.1234 or email',
+                label_visibility='collapsed')
+            st.checkbox('Make administrator', key='new_user_admin')
+            st.form_submit_button("Create user") 
 
 def _display_sort_options():
     st.radio(
