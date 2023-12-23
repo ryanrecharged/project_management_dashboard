@@ -105,10 +105,19 @@ def structure_page():
         
     # Chat box
     with spcr_col.expander("Communications hub"):
-        spcr_col.selectbox('To:', options=['Lampkin', 'Skelly'])
-        spcr_col.selectbox('Medium:', options=['Text'])
-        spcr_col.text_area('Contents of Message', height=200)
-        spcr_col.code('Enter history of messages here')
+        st.selectbox(
+            'To', options=['Lampkin', 'Skelly'], index=None, 
+            label_visibility='collapsed'
+            )
+        st.selectbox(
+            'Medium', options=['SMS'], index=None,
+            label_visibility='collapsed'
+            )
+        
+        st.text_area(
+            'Contents of Message', placeholder="[contents of message]", 
+            label_visibility='collapsed', height=200)
+        st.code('Enter history of messages here\nlampkin: [completed stage of "XYSA"]')
     
     # Attach document tab
     STATUS.produce_attach_document(attach_tab)
