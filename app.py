@@ -49,12 +49,19 @@ def login():
         on_change=UTILS.callback_sessions, 
         args=('login_form_pass', 'login_form_pass_key'))
     
+    login_col2.markdown('<span id="button-logout"></span>', unsafe_allow_html=True)
     login_col2.button("Login", key="button_login", 
               on_click=UTILS.validate_login)
     
     # Login Error
     if st.session_state.login_error:
         login_col2.warning(st.session_state.login_error_message)
+        
+    login_col2.divider()
+    
+    login_col2.write('Register')
+    login_col2.write('Learn more')
+    
         
 # Menu
 def menu():
@@ -185,7 +192,7 @@ def report_page():
     
     with admin_tab:
         st.multiselect(
-            'Administrative categories', 
+            'Settings categories', 
             options = ['Preferences', 'User access', 'File gateway',
                        'Project settings', 'Records'], # # Create task lists, # Sorting, filtering columns # Customize stages
             placeholder='[select to display]',
