@@ -184,7 +184,7 @@ def admin_settings_display(df):
         b.button("Print log file", key="button_print_log", disabled=True)
 
     with c3.expander("Workflow: :orange[Establish project structure]"):
-        w1, w2 = st.tabs(['Processes', 'Milestones'])
+        w1, w2 = st.tabs(['Stages', 'Milestones'])
     
         w1.selectbox(
             'Select project type', 
@@ -196,9 +196,8 @@ def admin_settings_display(df):
             label_visibility='collapsed')
         
         w2.radio(
-            'Milestone type', 
-            options=['Notes + Slider (simple)', 'Checklist (advanced)'],
-            label_visibility='collapsed'
+            'Format', 
+            options=['Notes + Slider', 'Checklist'],
             )
 
     with c2.expander("Data uploads"):
