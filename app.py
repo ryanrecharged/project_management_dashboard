@@ -62,8 +62,10 @@ def menu():
     
     menu_col2.subheader("Choose version")
     
+    st.markdown('<span id="button-after"></span>', unsafe_allow_html=True)
     menu_col2.button(f"{st.session_state.report_title} Report", key="button_update", 
               on_click=UTILS.update_session_state, args=("page", "entry"))
+    st.markdown('<span id="button-after"></span>', unsafe_allow_html=True)
     menu_col2.button("Project Manager", key="button_report",
               on_click=UTILS.update_session_state, args=("page", "report"))
 
