@@ -107,12 +107,12 @@ def structure_page():
     with spcr_col.expander("Communications hub"):
         st.selectbox(
             'To', options=['Lampkin', 'Skelly'], 
-            placeholder="recipient", index=None, 
+            placeholder="[Select recipient]", index=None, 
             label_visibility='collapsed'
             )
         st.selectbox(
             'Medium', options=['SMS'], 
-            index=0,
+            placeholder="[Select medium]", index=None,
             label_visibility='collapsed'
             )
         
