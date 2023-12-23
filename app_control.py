@@ -127,7 +127,7 @@ def get_state_vars():
         'pm_filter_toggle': False,
         'pm_sort_by' : 'Stage',
         'pm_sort_toggle' : False,
-        'project_name': 'Boonville, NY: National Grid SmartPath Connect PNO 22.XXXX',
+        'project_name': 'Hudson, NY: HRVA Transmission Line PNO 22.XXXX',
         'report_title': 'Structure'
         }
 

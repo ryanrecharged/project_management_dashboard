@@ -147,11 +147,11 @@ def admin_settings_display(df):
         print(each)
 
     
-    with c1.expander("Project name and title: :orange[Change headers]"):
+    with c1.expander("Project name and title: :orange[Change headings]"):
         s, t= st.tabs(['Name of Project', 'Report Title'])
         s.text_input(
             label='Name of Project', key="admin_project_name",
-            placeholder="Boonville, NY: National Grid SmartPath Connect PNO 22.XXXX",
+            placeholder="Hudson, NY: HRVA Transmission Line PNO 22.XXXX",
             label_visibility='collapsed',
             on_change=USER.set_project_name
             )
@@ -184,11 +184,22 @@ def admin_settings_display(df):
         b.button("Print log file", key="button_print_log", disabled=True)
 
     with c3.expander("Workflow: :orange[Upload files for synchronous field work]"):
-        w1, w2 = st.tabs(['Process and subprocess', 'Milestones'])
+        w1, w2 = st.tabs(['Processes', 'Milestones'])
         
-        w1.toggle('Set order')
+        if w1.toggle('Create'):
+            w1.selectbox(
+                'Select project type', 
+                options=['Project Type 1', 'Project Type 2'],
+                label_visibility='collapsed')
+            w1.text_area(
+                'Set project stages', placeholder="Set project stages; emojis allowed; using notion for duration increments + ",
+                label_visibility='collapsed')
         
-        w2.toggle('Set milestones')
+        if w2.toggle('Set milestones'):
+            w2.radio(
+                'Milestone type', options=['Notes+Slider', 'Checklist'], 
+                label_visibility='collapsed'
+                )
 
     with c2.expander("Data uploads"):
         d1, d2 = st.tabs(['File uploader', 'Second tab'])
