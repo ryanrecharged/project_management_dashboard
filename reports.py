@@ -191,7 +191,7 @@ def admin_settings_display(df):
         w2.toggle('Set milestones')
 
     with c2.expander("Data uploads"):
-        d1 = st.tabs(['File uploader'])
+        d1, d2 = st.tabs(['File uploader', 'Second tab'])
         with d1.form('file_uploader', clear_on_submit=True, border=False):
             hubs = st.file_uploader('STRUCTURE HUBS', type='csv')
             dxf = st.file_uploader('DXF FILES', type='dxf')
