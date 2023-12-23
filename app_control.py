@@ -18,7 +18,7 @@ def apply_custom_css():
         .stTextInput {box-shadow: 2px 3px 1px rgba(0,0,0,0.2);}
         .block-container {padding-bottom: 0rem;}
         button.st-emotion-cache-7ym5gk:active {background-color: #593773cc; border-color: #ffffff}
-        button.st-emotion-cache-7ym5gk:hover {background-color: #b16ee6cc; border-color: #ffffff; color: #ffffff}
+        button.st-emotion-cache-7ym5gk:hover {background-color: #b16ee6cc; color: #ffffff}
         .css-18e3th9 {padding-top: 0rem; padding-bottom: 0rem;}
         .css-ocqkz7 {gap: 0rem 1rem;}
         .e1fqkh3o1 {box-shadow: 0 3px 3px rgba(0,0,0,0.2);}
@@ -68,7 +68,6 @@ def apply_custom_button_styling():
             display: none;
         }
         .element-container:has(#button-after) + div button {
-            background-color: #593773cc;
             border: 2px solid #b16ee6;
             margin: 2px; 
             min-width: 155px; 
