@@ -318,8 +318,7 @@ def admin_settings_display(df):
             st.text_input(
                 label='Email address', placeholder='Contact: 631.555.1234 or email',
                 label_visibility='collapsed')
-            st.checkbox('Make administrator', key='new_user_admin')
-            st.form_submit_button("Create user") 
+            st.form_submit_button("Update user") 
 
 def _display_sort_options():
     st.radio(
