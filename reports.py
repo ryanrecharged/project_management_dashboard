@@ -136,7 +136,8 @@ def display_options_frame(crew_opts, outage_opts, str_opts, df):
         
     with st.expander("Assign Structure"):
         _display_assignment_expansion(crew_opts, str_opts, df)
-        
+    
+    st.markdown('<span id="button-logout"></span>', unsafe_allow_html=True)
     st.button("Logout", key="button_logout_report", on_click=UTILS.logout)
 
 def admin_settings_display(df):

@@ -160,6 +160,7 @@ def create_options_column(st_container):
         on_click=UTILS.update_session_state, args=("page", "report")
         )
 
+    st_container.markdown('<span id="button-logout"></span>', unsafe_allow_html=True)
     st_container.button(
         "Logout", key="button_logout_structure", on_click=UTILS.logout
         )

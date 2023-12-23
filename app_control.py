@@ -71,7 +71,7 @@ def apply_custom_button_styling():
         .element-container:has(#button-after) + div button {
             border: 2px solid #b16ee6;
             margin: 2px; 
-            min-width: 155px; 
+            min-width: 205px; 
             min-height: 60px;
         }
         
@@ -84,6 +84,17 @@ def apply_custom_button_styling():
         .element-container:has(#button-pending) + div button {
             background-color: #593773cc;
             border: 2px solid #ff7900; 
+            margin: 2px; 
+        }
+        
+        #button-logout {
+            display: none;
+        }
+        .element-container:has(#button-logout) {
+            display: none;
+        }
+        .element-container:has(#button-logout) + div button {
+            border: 1px dashed #939393; 
             margin: 2px; 
         }
         </style>
