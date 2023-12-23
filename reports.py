@@ -184,13 +184,15 @@ def admin_settings_display(df):
         b.button("Print log file", key="button_print_log", disabled=True)
 
     with c3.expander("Workflow: :orange[Upload files for synchronous field work]"):
-        w1, w2, w3 = st.tabs(['Process order', 'Stage milestones', 'File uploads'])
+        w1, w2 = st.tabs(['Process and subprocess', 'Milestones'])
         
         w1.toggle('Set order')
         
         w2.toggle('Set milestones')
-        
-        with w3.form('file_uploader', clear_on_submit=True, border=False):
+
+    with c2.expander("Data uploads"):
+        d1 = st.tabs(['File uploader'])
+        with d1.form('file_uploader', clear_on_submit=True, border=False):
             hubs = st.file_uploader('STRUCTURE HUBS', type='csv')
             dxf = st.file_uploader('DXF FILES', type='dxf')
             trav = st.file_uploader('CONTROL POINTS', type='csv')
@@ -246,19 +248,20 @@ def admin_settings_display(df):
         
             st.form_submit_button('Upload')
 
+
     with c1.expander("App integration: :orange[Connect to third-party apps]"):
         m, n = st.tabs(['Zapier', 'List of Zaps'])
         m.button("Connect Zapier")
         n.text_area("[List Zaps here via API query]")
         
-    with c2.expander("Data alignment"):
+    with c3.expander("Data alignment"):
         x, y, z, aa = st.tabs(["Sort by", "Filter by", "Field view", "Table view"])
         x.text_area("Enter list to sort by")
         y.text_area("Enter list to filter by")
         z.text_area("Enter list for field info")
         aa.text_area("Columns for Admin Table view")
     
-    with c3.expander("User management"):
+    with c2.expander("User management"):
         t, a, b = st.tabs(['Add user', 'Remove user', 'Update user'])
         if t.toggle('Add new user to project'):
             with st.form("new_user_entry", border=False):
