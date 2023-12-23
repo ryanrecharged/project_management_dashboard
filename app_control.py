@@ -82,7 +82,6 @@ def apply_custom_button_styling():
             display: none;
         }
         .element-container:has(#button-pending) + div button {
-            background-color: #593773cc;
             border: 2px solid #ff7900; 
             margin: 2px; 
         }
